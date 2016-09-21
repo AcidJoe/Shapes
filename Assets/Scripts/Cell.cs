@@ -7,7 +7,7 @@ public class Cell : ColorElement
     public Grid grid;
     public ChangeCursor cursor;
 
-    public GameObject roll;
+    //public GameObject roll;
 
     public Collider2D col;
     //public bool isNew;
@@ -17,7 +17,7 @@ public class Cell : ColorElement
 
 	void Awake ()
     {
-        roll.SetActive(false);
+        //roll.SetActive(false);
         col = GetComponent<Collider2D>();
         cursor = FindObjectOfType<ChangeCursor>();
         pos = transform.position;
@@ -44,11 +44,11 @@ public class Cell : ColorElement
 
         if (isReadyToChange)
         {
-            roll.SetActive(true);
+            //roll.SetActive(true);
         }
         else
         {
-            roll.SetActive(false);
+            //roll.SetActive(false);
         }
 	}
 

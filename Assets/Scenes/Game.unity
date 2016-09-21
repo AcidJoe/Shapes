@@ -98,6 +98,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1130028294}
+  - 114: {fileID: 1130028295}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -118,6 +119,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!114 &1130028295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1130028293}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 173fc78e230304c458c53a13206af9bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  single_block: {fileID: 0}
+  double_block: {fileID: 0}
+  blocks: []
+  currentBlock: {fileID: 0}
+  spawnPoint: {x: 0, y: 0, z: 0}
+  grid: {fileID: 0}
+  cursor: {fileID: 0}
+--- !u!1001 &1631783553
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000011588445248, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011588445248, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011588445248, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011588445248, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011588445248, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011588445248, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011588445248, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011588445248, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1668261030
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +228,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.9264706, g: 0.95506537, b: 1, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -178,7 +239,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -199,7 +260,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1668261030}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 2, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -213,6 +274,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1797775936}
+  - 114: {fileID: 1797775937}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -233,3 +295,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1797775937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1797775935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da162da8bd0c11149840388d3f48e1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellPrefab: {fileID: 1000013537301420, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
+  moveBlock: {fileID: 0}
+  cells: []
+  first: {fileID: 0}
+  second: {fileID: 0}
+  currentCell: {fileID: 0}
+  currentCheck: {fileID: 0}
+  newCells: []
+  forChange: []
+  movingBlocks: []
+  isCheck: 0
+  isMove: 0
