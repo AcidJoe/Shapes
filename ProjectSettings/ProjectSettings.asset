@@ -537,6 +537,6 @@ PlayerSettings:
   iOS::VR::enabledDevices: []
   tvOS::VR::enabledDevices: []
   cloudProjectId: 4729074e-73d4-4748-bcca-49c4de9020f8
-  projectName: Shapes (1)
+  projectName: Shapes_1
   organizationId: acid-joe
   cloudEnabled: 0
