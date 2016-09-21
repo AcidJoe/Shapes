@@ -69,6 +69,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000011668783564}
   - 114: {fileID: 114000012457389724}
+  - 61: {fileID: 61000011869912154}
   m_Layer: 0
   m_Name: Single
   m_TagString: Untagged
@@ -131,6 +132,20 @@ Transform:
   - {fileID: 4000010089648056}
   m_Father: {fileID: 4000011668783564}
   m_RootOrder: 0
+--- !u!61 &61000011869912154
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013457619400}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
 --- !u!114 &114000012457389724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,13 +161,14 @@ MonoBehaviour:
   - {fileID: 114000013244435776}
   mousePos: {x: 0, y: 0, z: 0}
   origin: {x: 0, y: 0, z: 0}
-  delay: 0
+  delay: 0.3
   moveReadyTime: 0
   positions: []
   cur0: 0
   cur1: 0
   isOverTheGrid: 0
   grid: {fileID: 0}
+  cursor: {fileID: 0}
 --- !u!114 &114000013244435776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,7 +186,7 @@ MonoBehaviour:
   colors:
   - {r: 0, g: 0, b: 0, a: 0}
   - {r: 1, g: 0.8235294, b: 0.8235294, a: 1}
-  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 1, g: 0.9933063, b: 0.75735295, a: 1}
   - {r: 0, g: 0, b: 0, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
