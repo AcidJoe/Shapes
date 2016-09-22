@@ -10,6 +10,7 @@ public class ColorElement : MonoBehaviour
 
     public Color[] colors;
     public Sprite[] nums;
+    public Color[] numColors;
 
     protected bool isSet;
 
@@ -27,6 +28,7 @@ public class ColorElement : MonoBehaviour
     {
         spriterBlock.color = colors[number];
         spriterNum.sprite = nums[number];
+        spriterNum.color = numColors[number];
         isSet = true;
     }
 }
