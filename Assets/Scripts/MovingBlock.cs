@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MovingBlock : MonoBehaviour
 {
     public Block block;
     Transform target;
+
+    Transform destination;
+
+    public List<Transform> path = new List<Transform>();
 
     public SpriteRenderer number;
 
@@ -13,18 +18,28 @@ public class MovingBlock : MonoBehaviour
         block = GetComponent<Block>();
     }
 
-	void Update ()
+    void Update()
     {
-        if (target)
+        if (target && destination)
         {
-            transform.Translate((target.position - transform.position).normalized * Time.deltaTime);
+            transform.Translate((destination.position - transform.position).normalized * Time.deltaTime);
             _destroy();
         }
-	}
+    }
 
     public void SetTarget(Transform t)
     {
         target = t;
+    }
+
+    public void SetDestination(Transform d)
+    {
+        destination = d;
+
+        if(destination == target)
+        {
+            destination = target;
+        }
     }
 
     void _destroy()
@@ -32,6 +47,10 @@ public class MovingBlock : MonoBehaviour
         if(Vector3.Distance(transform.position, target.position) < 0.1f)
         {
             Destroy(gameObject);
+        }
+        else if(Vector3.Distance(transform.position, destination.position) < 0.1f)
+        {
+            destination = target;
         }
     }
 }

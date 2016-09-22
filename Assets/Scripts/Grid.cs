@@ -270,6 +270,7 @@ public class Grid : MonoBehaviour
                 GameObject m = Instantiate(moveBlock, c.transform.position, Quaternion.identity) as GameObject;
                 m.GetComponent<Block>().number = c.number;
                 m.GetComponent<MovingBlock>().SetTarget(currentCell.transform);
+                m.GetComponent<MovingBlock>().SetDestination(path(c, currentCell, chain));
                 c.SetNumber(0);
             }
             else if (c == currentCell)
@@ -299,6 +300,27 @@ public class Grid : MonoBehaviour
         }
 
         CheckMatches();
+    }
+
+    public Transform path(Cell from, Cell to, List<Cell> chain)
+    {
+        Transform t = from.transform;
+
+        if (from.neighbours().Contains(to))
+        {
+            t = to.transform;
+        }
+        else
+        {
+            foreach (Cell c in from.neighbours())
+            {
+                if (c.neighbours().Contains(to) && chain.Contains(c))
+                {
+                    t = c.transform;
+                }
+            }
+        }
+        return t;
     }
 
     public IEnumerator Star(Cell c)
