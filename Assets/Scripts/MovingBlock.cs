@@ -48,7 +48,7 @@ public class MovingBlock : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if(Vector3.Distance(transform.position, destination.position) < 0.1f)
+        else if(Vector3.Distance(transform.position, destination.position) < 0.01f)
         {
             destination = target;
         }
