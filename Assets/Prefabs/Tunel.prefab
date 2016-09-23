@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000014281324906}
   - 212: {fileID: 212000013969873016}
+  - 114: {fileID: 114000014025561654}
   m_Layer: 0
   m_Name: Tunel
   m_TagString: Untagged
@@ -70,6 +71,17 @@ Transform:
   - {fileID: 4000011479924350}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &114000014025561654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013426701752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635b9433345a75243ad9743eb70a7c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212000011619864088
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -98,7 +110,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 7
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: efc565326492b6b4fa3139b886a05835, type: 3}
   m_Color: {r: 0.6666667, g: 0.6666667, b: 0.6666667, a: 1}
   m_FlipX: 0
