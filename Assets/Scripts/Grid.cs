@@ -18,9 +18,11 @@ public class Grid : MonoBehaviour
     public List<Cell> newCells;
     public List<Cell> forChange;
     public MovingBlock[] movingBlocks;
+    public Tunel[] tunels;
 
     public bool isCheck;
     public bool isMove;
+    public bool isAnimation;
 
     ChangeCursor cursor;
 
@@ -46,6 +48,7 @@ public class Grid : MonoBehaviour
     {
         cells = FindObjectsOfType<Cell>();
         movingBlocks = FindObjectsOfType<MovingBlock>();
+        tunels = FindObjectsOfType<Tunel>();
 
         if (isMove)
         {
@@ -272,13 +275,13 @@ public class Grid : MonoBehaviour
                 m.GetComponent<Block>().number = c.number;
                 m.GetComponent<MovingBlock>().SetTarget(currentCell.transform);
                 m.GetComponent<MovingBlock>().SetDestination(path(c, currentCell, chain));
-                c.SetNumber(0);
+                c.spriterNum.sortingOrder = 0;
             }
             else if (c == currentCell)
             {
                 GameObject m = Instantiate(moveBlock, c.transform.position, Quaternion.identity) as GameObject;
                 m.GetComponent<Block>().number = c.number;
-                m.GetComponent<SpriteRenderer>().sortingOrder = 20;
+                //m.GetComponent<SpriteRenderer>().sortingOrder = 20;
                 m.GetComponent<MovingBlock>().number.sortingOrder = 25;
                 int i = c.number + 1;
                 if (i > 7)
@@ -292,12 +295,30 @@ public class Grid : MonoBehaviour
 
         yield return new WaitWhile(() => isMove == true);
 
+        isAnimation = true;
+
+        yield return new WaitWhile(() => isAnimation == true);
+
+        foreach(Cell c in chain)
+        {
+            if(c != currentCell)
+            {
+                c.SetNumber(0);
+                c.spriterNum.sortingOrder = 1;
+            }
+        }
+
         foreach (Cell c in cells)
         {
             if (c.number == 0 && newCells.Contains(c))
             {
                 newCells.Remove(c);
             }
+        }
+
+        foreach(Tunel t in tunels)
+        {
+            Destroy(t.gameObject);
         }
 
         CheckMatches();
