@@ -7,6 +7,8 @@ public class Grid : MonoBehaviour
     public GameObject cellPrefab;
     public GameObject moveBlock;
 
+    public GameObject t1;
+
     public Cell[] cells;
 
     public Cell first;
@@ -296,6 +298,7 @@ public class Grid : MonoBehaviour
         yield return new WaitWhile(() => isMove == true);
 
         isAnimation = true;
+        Instantiate(t1, currentCell.transform.position, Quaternion.identity);
 
         yield return new WaitWhile(() => isAnimation == true);
 
