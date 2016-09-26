@@ -152,93 +152,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!1001 &1096692872
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000012822843162, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
-      propertyPath: m_Name
-      value: Transform 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000012282648716, guid: aa6ea29d922a265418e6d74134e2ecaa,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000012282648716, guid: aa6ea29d922a265418e6d74134e2ecaa,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 0.84313726
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000012282648716, guid: aa6ea29d922a265418e6d74134e2ecaa,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0.84313726
-      objectReference: {fileID: 0}
-    - target: {fileID: 95000012565878792, guid: aa6ea29d922a265418e6d74134e2ecaa,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: ba6ad7916edefac4cbfa0eda0def0d6d, type: 2}
-    - target: {fileID: 212000013935227284, guid: aa6ea29d922a265418e6d74134e2ecaa,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 1975b39e8ff179640bbb68bd6b9d505c,
-        type: 3}
-    - target: {fileID: 212000013935227284, guid: aa6ea29d922a265418e6d74134e2ecaa,
-        type: 2}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000013935227284, guid: aa6ea29d922a265418e6d74134e2ecaa,
-        type: 2}
-      propertyPath: m_Color.g
-      value: 0.972549
-      objectReference: {fileID: 0}
-    - target: {fileID: 212000013935227284, guid: aa6ea29d922a265418e6d74134e2ecaa,
-        type: 2}
-      propertyPath: m_Color.b
-      value: 0.72156864
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1130028293
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +566,10 @@ MonoBehaviour:
   cellPrefab: {fileID: 1000013537301420, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
   moveBlock: {fileID: 1000011659018354, guid: 691ca0910c8b7e747a91ab5033bac8c6, type: 2}
   t1: {fileID: 1000012822843162, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
+  t2: {fileID: 1000010907989416, guid: ac7ff7905694d7a4a8618f3b3e9cf217, type: 2}
+  t3: {fileID: 1000013290307250, guid: 40d8cf1702e79e841b8c8daf52fbc559, type: 2}
+  t4: {fileID: 1000013227388136, guid: cdd458e706bd6a044897b1c9472ac760, type: 2}
+  t5: {fileID: 1000013272080280, guid: 4ed56f6e774a68548a69fae6feac6e6f, type: 2}
   cells: []
   first: {fileID: 0}
   second: {fileID: 0}

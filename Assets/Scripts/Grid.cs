@@ -8,6 +8,10 @@ public class Grid : MonoBehaviour
     public GameObject moveBlock;
 
     public GameObject t1;
+    public GameObject t2;
+    public GameObject t3;
+    public GameObject t4;
+    public GameObject t5;
 
     public Cell[] cells;
 
@@ -298,7 +302,7 @@ public class Grid : MonoBehaviour
         yield return new WaitWhile(() => isMove == true);
 
         isAnimation = true;
-        GameObject g = Instantiate(t1, currentCell.transform.position, Quaternion.identity) as GameObject;
+        GameObject g = Instantiate(_animation(), currentCell.transform.position, Quaternion.identity) as GameObject;
 
         foreach (Tunel t in tunels)
         {
@@ -329,6 +333,25 @@ public class Grid : MonoBehaviour
         }
 
         CheckMatches();
+    }
+
+    public GameObject _animation()
+    {
+        switch (currentCell.number -1)
+        {
+            case 1:
+                return t1;
+            case 2:
+                return t2;
+            case 3:
+                return t3;
+            case 4:
+                return t4;
+            case 5:
+                return t5;
+        }
+
+        return t1;
     }
 
     public Transform path(Cell from, Cell to, List<Cell> chain)
