@@ -24,7 +24,7 @@ public class Grid : MonoBehaviour
 
     public bool isCheck;
     public bool isMove;
-    public bool isAnimation;
+    public static bool isAnimation;
 
     ChangeCursor cursor;
 
@@ -298,18 +298,27 @@ public class Grid : MonoBehaviour
         yield return new WaitWhile(() => isMove == true);
 
         isAnimation = true;
-        Instantiate(t1, currentCell.transform.position, Quaternion.identity);
+        GameObject g = Instantiate(t1, currentCell.transform.position, Quaternion.identity) as GameObject;
 
-        yield return new WaitWhile(() => isAnimation == true);
-
-        foreach(Cell c in chain)
+        foreach (Tunel t in tunels)
         {
-            if(c != currentCell)
+            Destroy(t.gameObject);
+        }
+
+        foreach (Cell c in chain)
+        {
+            if (c != currentCell)
             {
                 c.SetNumber(0);
                 c.spriterNum.sortingOrder = 1;
             }
         }
+        yield return new WaitForSeconds(1);
+
+        isAnimation = false;
+        Destroy(g);
+
+        yield return new WaitWhile(() => isAnimation == true);
 
         foreach (Cell c in cells)
         {
@@ -317,11 +326,6 @@ public class Grid : MonoBehaviour
             {
                 newCells.Remove(c);
             }
-        }
-
-        foreach(Tunel t in tunels)
-        {
-            Destroy(t.gameObject);
         }
 
         CheckMatches();

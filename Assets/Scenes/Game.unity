@@ -152,6 +152,93 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1001 &1096692872
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010785601494, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012822843162, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
+      propertyPath: m_Name
+      value: Transform 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000012282648716, guid: aa6ea29d922a265418e6d74134e2ecaa,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000012282648716, guid: aa6ea29d922a265418e6d74134e2ecaa,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.84313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000012282648716, guid: aa6ea29d922a265418e6d74134e2ecaa,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.84313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 95000012565878792, guid: aa6ea29d922a265418e6d74134e2ecaa,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ba6ad7916edefac4cbfa0eda0def0d6d, type: 2}
+    - target: {fileID: 212000013935227284, guid: aa6ea29d922a265418e6d74134e2ecaa,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1975b39e8ff179640bbb68bd6b9d505c,
+        type: 3}
+    - target: {fileID: 212000013935227284, guid: aa6ea29d922a265418e6d74134e2ecaa,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000013935227284, guid: aa6ea29d922a265418e6d74134e2ecaa,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.972549
+      objectReference: {fileID: 0}
+    - target: {fileID: 212000013935227284, guid: aa6ea29d922a265418e6d74134e2ecaa,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.72156864
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1130028293
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,9 +318,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1378928767}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -391, y: -213}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 89, y: 87}
   m_SizeDelta: {x: 97, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1218251587
@@ -565,7 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellPrefab: {fileID: 1000013537301420, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
   moveBlock: {fileID: 1000011659018354, guid: 691ca0910c8b7e747a91ab5033bac8c6, type: 2}
-  t1: {fileID: 0}
+  t1: {fileID: 1000012822843162, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
   cells: []
   first: {fileID: 0}
   second: {fileID: 0}
@@ -577,7 +664,6 @@ MonoBehaviour:
   tunels: []
   isCheck: 0
   isMove: 0
-  isAnimation: 0
 --- !u!61 &1797775938
 BoxCollider2D:
   m_ObjectHideFlags: 0
