@@ -281,28 +281,37 @@ public class Grid : MonoBehaviour
                 m.GetComponent<Block>().number = c.number;
                 m.GetComponent<MovingBlock>().SetTarget(currentCell.transform);
                 m.GetComponent<MovingBlock>().SetDestination(path(c, currentCell, chain));
-                c.spriterNum.sortingOrder = 0;
+                //c.spriterNum.sortingOrder = 0;
                 c.SetNumber(0);
             }
             else if (c == currentCell)
             {
                 GameObject m = Instantiate(moveBlock, c.transform.position, Quaternion.identity) as GameObject;
                 m.GetComponent<Block>().number = c.number;
-                //m.GetComponent<SpriteRenderer>().sortingOrder = 20;
+                m.GetComponent<SpriteRenderer>().sortingOrder = 20;
                 m.GetComponent<MovingBlock>().number.sortingOrder = 25;
-                int i = c.number + 1;
-                if (i > 7)
-                {
-                    StartCoroutine(Star(currentCell));
-                    i = 0;
-                }
-                c.SetNumber(i);
+                //int i = c.number + 1;
+                //if (i > 7)
+                //{
+                //    StartCoroutine(Star(currentCell));
+                //    i = 0;
+                //}
+                //c.SetNumber(i);
             }
         }
 
         yield return new WaitWhile(() => isMove == true);
 
         isAnimation = true;
+
+        int i = currentCell.number + 1;
+        if (i > 7)
+        {
+            StartCoroutine(Star(currentCell));
+            i = 0;
+        }
+        currentCell.SetNumber(i);
+
         GameObject g = Instantiate(_animation(), currentCell.transform.position, Quaternion.identity) as GameObject;
 
         foreach (Tunel t in tunels)
