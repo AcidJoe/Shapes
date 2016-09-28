@@ -282,6 +282,7 @@ public class Grid : MonoBehaviour
                 m.GetComponent<MovingBlock>().SetTarget(currentCell.transform);
                 m.GetComponent<MovingBlock>().SetDestination(path(c, currentCell, chain));
                 c.spriterNum.sortingOrder = 0;
+                c.SetNumber(0);
             }
             else if (c == currentCell)
             {
@@ -309,14 +310,14 @@ public class Grid : MonoBehaviour
             Destroy(t.gameObject);
         }
 
-        foreach (Cell c in chain)
-        {
-            if (c != currentCell)
-            {
-                c.SetNumber(0);
-                c.spriterNum.sortingOrder = 1;
-            }
-        }
+        //foreach (Cell c in chain)
+        //{
+        //    if (c != currentCell)
+        //    {
+        //        c.SetNumber(0);
+        //        c.spriterNum.sortingOrder = 1;
+        //    }
+        //}
         yield return new WaitForSeconds(1);
 
         isAnimation = false;

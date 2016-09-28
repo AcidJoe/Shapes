@@ -38,36 +38,34 @@ public class MovingBlock : MonoBehaviour
     {
         destination = d;
 
-        GameObject tun;
+        //GameObject tun;
 
-        if (transform.position.x != d.position.x)
-        {
-            if (transform.position.x > d.position.x)
-            {
-                tun = Instantiate(tunel, new Vector3(d.position.x + .5f, d.position.y), Quaternion.identity) as GameObject;
-                tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
-            }
-            else if (transform.position.x < d.position.x)
-            {
-                tun = Instantiate(tunel, new Vector3(d.position.x - .5f, d.position.y), Quaternion.identity) as GameObject;
-                tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
-            }
-        }
-        else if (transform.position.y != d.position.y)
-        {
-            if (transform.position.y > d.position.y)
-            {
-                tun = Instantiate(tunel, new Vector3(d.position.x, d.position.y + .5f), Quaternion.Euler(0, 0, 90)) as GameObject;
-                tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
-            }
-            else if (transform.position.y < d.position.y)
-            {
-                tun = Instantiate(tunel, new Vector3(d.position.x, d.position.y - .5f), Quaternion.Euler(0, 0, 90)) as GameObject;
-                tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
-            }
-        }
-
-        //tun.GetComponent<Tunel>().SetColor(gameObject.GetComponent<SpriteRenderer>().color);
+        //if (transform.position.x != d.position.x)
+        //{
+        //    if (transform.position.x > d.position.x)
+        //    {
+        //        tun = Instantiate(tunel, new Vector3(d.position.x + .5f, d.position.y), Quaternion.identity) as GameObject;
+        //        //tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
+        //    }
+        //    else if (transform.position.x < d.position.x)
+        //    {
+        //        tun = Instantiate(tunel, new Vector3(d.position.x - .5f, d.position.y), Quaternion.identity) as GameObject;
+        //        //tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
+        //    }
+        //}
+        //else if (transform.position.y != d.position.y)
+        //{
+        //    if (transform.position.y > d.position.y)
+        //    {
+        //        tun = Instantiate(tunel, new Vector3(d.position.x, d.position.y + .5f), Quaternion.Euler(0, 0, 90)) as GameObject;
+        //        //tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
+        //    }
+        //    else if (transform.position.y < d.position.y)
+        //    {
+        //        tun = Instantiate(tunel, new Vector3(d.position.x, d.position.y - .5f), Quaternion.Euler(0, 0, 90)) as GameObject;
+        //        //tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
+        //    }
+        //}
 
         if(destination == target)
         {
