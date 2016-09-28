@@ -20,14 +20,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 1
-        inSlope: -0.12200435
-        outSlope: -0.12200435
+        value: 0.7647059
+        inSlope: 0.100217864
+        outSlope: 0.100217864
         tangentMode: 10
       - time: 0.9
-        value: 0.8901961
-        inSlope: -0.12200435
-        outSlope: -0.12200435
+        value: 0.85490197
+        inSlope: 0.100217864
+        outSlope: 0.100217864
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -40,14 +40,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.84313726
-        inSlope: -0.030501088
-        outSlope: -0.030501088
+        value: 0.9098039
+        inSlope: 0.100217864
+        outSlope: 0.100217864
         tangentMode: 10
       - time: 0.9
-        value: 0.8156863
-        inSlope: -0.030501088
-        outSlope: -0.030501088
+        value: 1
+        inSlope: 0.100217864
+        outSlope: 0.100217864
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -60,14 +60,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.84313726
-        inSlope: 0.17429194
-        outSlope: 0.17429194
+        value: 1
+        inSlope: -0.23965141
+        outSlope: -0.23965141
         tangentMode: 10
       - time: 0.9
-        value: 1
-        inSlope: 0.17429194
-        outSlope: 0.17429194
+        value: 0.78431374
+        inSlope: -0.23965141
+        outSlope: -0.23965141
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -95,14 +95,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 1
-        inSlope: -0.31372547
-        outSlope: -0.31372547
+        value: 0.88235295
+        inSlope: 0.10457516
+        outSlope: 0.10457516
         tangentMode: 10
       - time: 0.9
-        value: 0.7176471
-        inSlope: -0.31372547
-        outSlope: -0.31372547
+        value: 0.9764706
+        inSlope: 0.10457516
+        outSlope: 0.10457516
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -115,14 +115,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.972549
-        inSlope: 0.030501088
-        outSlope: 0.030501088
+        value: 0.6156863
+        inSlope: 0.16122004
+        outSlope: 0.16122004
         tangentMode: 10
       - time: 0.9
-        value: 1
-        inSlope: 0.030501088
-        outSlope: 0.030501088
+        value: 0.7607843
+        inSlope: 0.16122004
+        outSlope: 0.16122004
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -135,14 +135,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.72156864
-        inSlope: -0.25708064
-        outSlope: -0.25708064
+        value: 1
+        inSlope: -1.0501089
+        outSlope: -1.0501089
         tangentMode: 10
       - time: 0.9
-        value: 0.49019608
-        inSlope: -0.25708064
-        outSlope: -0.25708064
+        value: 0.05490196
+        inSlope: -1.0501089
+        outSlope: -1.0501089
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -169,25 +169,25 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 1975b39e8ff179640bbb68bd6b9d505c, type: 3}
+      value: {fileID: 21300000, guid: 2e0ca1c6c446bf94e96b38bbdd8a049f, type: 3}
     - time: 0.1
-      value: {fileID: 21300000, guid: 1de5b1669f0db7a49b256a77e755df04, type: 3}
+      value: {fileID: 21300000, guid: ad7e64c9f13963544a394a69d6809faf, type: 3}
     - time: 0.2
-      value: {fileID: 21300000, guid: 1a32f8a34e05d3f4d87c5e040a8edece, type: 3}
+      value: {fileID: 21300000, guid: c8999a6f72dfce24abfba5ea8caebdf5, type: 3}
     - time: 0.3
-      value: {fileID: 21300000, guid: cb7839cd7a9957c438c57c0ada0c0211, type: 3}
+      value: {fileID: 21300000, guid: 459281322f57d03469b7042f70d2c5f8, type: 3}
     - time: 0.4
-      value: {fileID: 21300000, guid: 245f6a980a479cf4eb900a3841ff8291, type: 3}
+      value: {fileID: 21300000, guid: fdf6d7b5f883f3a4f9b29b08bc633626, type: 3}
     - time: 0.5
-      value: {fileID: 21300000, guid: 720ced453f15df646805e6a5e21cb49e, type: 3}
+      value: {fileID: 21300000, guid: 623977a04a3f45d4da9f2e3a91124291, type: 3}
     - time: 0.6
-      value: {fileID: 21300000, guid: a630e09fd27dd3946b6e55f06a878709, type: 3}
+      value: {fileID: 21300000, guid: d1a2350a7e00379488890d9cf3c1aeac, type: 3}
     - time: 0.70000005
-      value: {fileID: 21300000, guid: 0b0a920c006aa744ea31f0c9ca285f96, type: 3}
+      value: {fileID: 21300000, guid: ccdcbcad26a53d14d85445e78ee5c6a0, type: 3}
     - time: 0.8000001
-      value: {fileID: 21300000, guid: 1153ee35dc991c149a3923b6a963512d, type: 3}
+      value: {fileID: 21300000, guid: c241727f062a6984f83b278571941d41, type: 3}
     - time: 0.9000001
-      value: {fileID: 21300000, guid: d1d182e5d778aa64abd20281f47dd9f4, type: 3}
+      value: {fileID: 21300000, guid: c573830df7c57d94d9951ecf963799a3, type: 3}
     attribute: m_Sprite
     path: Image
     classID: 212
@@ -254,16 +254,16 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 1975b39e8ff179640bbb68bd6b9d505c, type: 3}
-    - {fileID: 21300000, guid: 1de5b1669f0db7a49b256a77e755df04, type: 3}
-    - {fileID: 21300000, guid: 1a32f8a34e05d3f4d87c5e040a8edece, type: 3}
-    - {fileID: 21300000, guid: cb7839cd7a9957c438c57c0ada0c0211, type: 3}
-    - {fileID: 21300000, guid: 245f6a980a479cf4eb900a3841ff8291, type: 3}
-    - {fileID: 21300000, guid: 720ced453f15df646805e6a5e21cb49e, type: 3}
-    - {fileID: 21300000, guid: a630e09fd27dd3946b6e55f06a878709, type: 3}
-    - {fileID: 21300000, guid: 0b0a920c006aa744ea31f0c9ca285f96, type: 3}
-    - {fileID: 21300000, guid: 1153ee35dc991c149a3923b6a963512d, type: 3}
-    - {fileID: 21300000, guid: d1d182e5d778aa64abd20281f47dd9f4, type: 3}
+    - {fileID: 21300000, guid: 2e0ca1c6c446bf94e96b38bbdd8a049f, type: 3}
+    - {fileID: 21300000, guid: ad7e64c9f13963544a394a69d6809faf, type: 3}
+    - {fileID: 21300000, guid: c8999a6f72dfce24abfba5ea8caebdf5, type: 3}
+    - {fileID: 21300000, guid: 459281322f57d03469b7042f70d2c5f8, type: 3}
+    - {fileID: 21300000, guid: fdf6d7b5f883f3a4f9b29b08bc633626, type: 3}
+    - {fileID: 21300000, guid: 623977a04a3f45d4da9f2e3a91124291, type: 3}
+    - {fileID: 21300000, guid: d1a2350a7e00379488890d9cf3c1aeac, type: 3}
+    - {fileID: 21300000, guid: ccdcbcad26a53d14d85445e78ee5c6a0, type: 3}
+    - {fileID: 21300000, guid: c241727f062a6984f83b278571941d41, type: 3}
+    - {fileID: 21300000, guid: c573830df7c57d94d9951ecf963799a3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -289,14 +289,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 1
-        inSlope: -0.12200435
-        outSlope: -0.12200435
+        value: 0.7647059
+        inSlope: 0.100217864
+        outSlope: 0.100217864
         tangentMode: 10
       - time: 0.9
-        value: 0.8901961
-        inSlope: -0.12200435
-        outSlope: -0.12200435
+        value: 0.85490197
+        inSlope: 0.100217864
+        outSlope: 0.100217864
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -309,14 +309,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.84313726
-        inSlope: -0.030501088
-        outSlope: -0.030501088
+        value: 0.9098039
+        inSlope: 0.100217864
+        outSlope: 0.100217864
         tangentMode: 10
       - time: 0.9
-        value: 0.8156863
-        inSlope: -0.030501088
-        outSlope: -0.030501088
+        value: 1
+        inSlope: 0.100217864
+        outSlope: 0.100217864
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -329,14 +329,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.84313726
-        inSlope: 0.17429194
-        outSlope: 0.17429194
+        value: 1
+        inSlope: -0.23965141
+        outSlope: -0.23965141
         tangentMode: 10
       - time: 0.9
-        value: 1
-        inSlope: 0.17429194
-        outSlope: 0.17429194
+        value: 0.78431374
+        inSlope: -0.23965141
+        outSlope: -0.23965141
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -364,14 +364,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 1
-        inSlope: -0.31372547
-        outSlope: -0.31372547
+        value: 0.88235295
+        inSlope: 0.10457516
+        outSlope: 0.10457516
         tangentMode: 10
       - time: 0.9
-        value: 0.7176471
-        inSlope: -0.31372547
-        outSlope: -0.31372547
+        value: 0.9764706
+        inSlope: 0.10457516
+        outSlope: 0.10457516
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -384,14 +384,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.972549
-        inSlope: 0.030501088
-        outSlope: 0.030501088
+        value: 0.6156863
+        inSlope: 0.16122004
+        outSlope: 0.16122004
         tangentMode: 10
       - time: 0.9
-        value: 1
-        inSlope: 0.030501088
-        outSlope: 0.030501088
+        value: 0.7607843
+        inSlope: 0.16122004
+        outSlope: 0.16122004
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -404,14 +404,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0.72156864
-        inSlope: -0.25708064
-        outSlope: -0.25708064
+        value: 1
+        inSlope: -1.0501089
+        outSlope: -1.0501089
         tangentMode: 10
       - time: 0.9
-        value: 0.49019608
-        inSlope: -0.25708064
-        outSlope: -0.25708064
+        value: 0.05490196
+        inSlope: -1.0501089
+        outSlope: -1.0501089
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
