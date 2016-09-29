@@ -24,7 +24,6 @@ public class Grid : MonoBehaviour
     public List<Cell> newCells;
     public List<Cell> forChange;
     public MovingBlock[] movingBlocks;
-    public Tunel[] tunels;
 
     public bool isCheck;
     public bool isMove;
@@ -54,7 +53,6 @@ public class Grid : MonoBehaviour
     {
         cells = FindObjectsOfType<Cell>();
         movingBlocks = FindObjectsOfType<MovingBlock>();
-        tunels = FindObjectsOfType<Tunel>();
 
         if (isMove)
         {
@@ -313,11 +311,6 @@ public class Grid : MonoBehaviour
         currentCell.SetNumber(i);
 
         GameObject g = Instantiate(_animation(), currentCell.transform.position, Quaternion.identity) as GameObject;
-
-        foreach (Tunel t in tunels)
-        {
-            Destroy(t.gameObject);
-        }
 
         //foreach (Cell c in chain)
         //{
