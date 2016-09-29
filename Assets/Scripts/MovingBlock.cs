@@ -7,23 +7,38 @@ public class MovingBlock : MonoBehaviour
     public Block block;
     Transform target;
 
-    Transform destination;
-
     public List<Transform> path = new List<Transform>();
 
     public SpriteRenderer number;
 
+    public GameObject particles;
+    public ParticleSystem ps;
+
+    public Transform dot1, dot2;
+    public float dist;
+
+    public bool isSet;
+
     void Awake()
     {
+        isSet = false;
         block = GetComponent<Block>();
+        ps = particles.GetComponent<ParticleSystem>();
+        ps.Pause(true);
     }
 
     void Update()
     {
-        if (target && destination)
+        dist = Vector3.Distance(dot1.position, dot2.position);
+
+        if (target)
         {
-            transform.Translate((destination.position - transform.position).normalized * Time.deltaTime);
-            _destroy();
+            if (!isSet)
+            {
+                Setup();
+            }
+
+            ps.Play(true);
         }
     }
 
@@ -32,25 +47,16 @@ public class MovingBlock : MonoBehaviour
         target = t;
     }
 
-    public void SetDestination(Transform d)
+    public void Setup()
     {
-        destination = d;
-
-        if(destination == target)
-        {
-            destination = target;
-        }
+        print(block.spriterBlock.color);
+        ps.startColor = block.spriterBlock.color;
+        print(ps.startColor);
+        isSet = true;
     }
 
     void _destroy()
     {
-        if(Vector3.Distance(transform.position, target.position) < 0.01f)
-        {
-            Destroy(gameObject);
-        }
-        else if(Vector3.Distance(transform.position, destination.position) < 0.01f)
-        {
-            destination = target;
-        }
+
     }
 }

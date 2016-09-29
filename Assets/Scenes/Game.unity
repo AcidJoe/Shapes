@@ -578,7 +578,6 @@ MonoBehaviour:
   newCells: []
   forChange: []
   movingBlocks: []
-  tunels: []
   isCheck: 0
   isMove: 0
 --- !u!61 &1797775938
