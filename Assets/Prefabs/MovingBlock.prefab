@@ -205,6 +205,7 @@ MonoBehaviour:
   block: {fileID: 114000012337022536}
   path: []
   number: {fileID: 212000010745985966}
+  border: {fileID: 1000010794905064}
   particles: {fileID: 1000010189791614}
   ps: {fileID: 0}
   dot1: {fileID: 4000012624987842}
@@ -308,7 +309,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 0.5
+      scalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -343,7 +344,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 2
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -469,12 +470,12 @@ ParticleSystem:
       maxColor: {r: 0.9137255, g: 0.08235294, b: 0.08235294, a: 1}
       minMaxState: 0
     startSize:
-      scalar: 0.1
+      scalar: 0.3
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0.16149071
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -485,7 +486,7 @@ ParticleSystem:
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -502,7 +503,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-      minMaxState: 0
+      minMaxState: 1
     startSizeY:
       scalar: 1
       maxCurve:
@@ -680,7 +681,7 @@ ParticleSystem:
       minMaxState: 0
     randomizeRotationDirection: 0
     gravityModifier: 0
-    maxNumParticles: 2
+    maxNumParticles: 4
     size3D: 0
     rotation3D: 0
   ShapeModule:
@@ -708,7 +709,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 2
+      scalar: 10
       maxCurve:
         serializedVersion: 2
         m_Curve:

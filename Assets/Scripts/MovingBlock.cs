@@ -10,6 +10,7 @@ public class MovingBlock : MonoBehaviour
     public List<Transform> path = new List<Transform>();
 
     public SpriteRenderer number;
+    public GameObject border;
 
     public GameObject particles;
     public ParticleSystem ps;
@@ -24,7 +25,7 @@ public class MovingBlock : MonoBehaviour
         isSet = false;
         block = GetComponent<Block>();
         ps = particles.GetComponent<ParticleSystem>();
-        ps.Pause(true);
+        ps.Pause();
     }
 
     void Update()
@@ -33,12 +34,25 @@ public class MovingBlock : MonoBehaviour
 
         if (target)
         {
+            if (dist > 0.5)
+            {
+                Quaternion rot = Quaternion.LookRotation(target.position - ps.transform.position);
+                ps.transform.rotation = rot;
+            }
             if (!isSet)
             {
                 Setup();
             }
 
-            ps.Play(true);
+            var sh = ps.shape;
+            sh.radius = dist / 2;
+
+            transform.localScale -= new Vector3(Time.deltaTime * 0.3f, Time.deltaTime * 0.3f);
+
+            if(dist < 0.2)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -49,14 +63,16 @@ public class MovingBlock : MonoBehaviour
 
     public void Setup()
     {
-        print(block.spriterBlock.color);
+        border.SetActive(false);
         ps.startColor = block.spriterBlock.color;
-        print(ps.startColor);
+        var sh = ps.shape;
+        sh.radius = dist/2;
+        ps.Play();
         isSet = true;
     }
 
-    void _destroy()
+    public void _destroy()
     {
-
+        Destroy(gameObject);
     }
 }

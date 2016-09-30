@@ -58,7 +58,7 @@ public class Grid : MonoBehaviour
         {
             if (movingBlocks.Length == 1)
             {
-                movingBlocks[0].SetTarget(currentCell.transform);
+                movingBlocks[0]._destroy();
             }
             if (movingBlocks.Length <= 0)
             {
