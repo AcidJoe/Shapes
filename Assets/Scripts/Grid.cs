@@ -13,6 +13,8 @@ public class Grid : MonoBehaviour
     public GameObject t4;
     public GameObject t5;
 
+    public GameObject actCol;
+
     public Cell[] cells;
 
     public Cell first;
@@ -283,6 +285,7 @@ public class Grid : MonoBehaviour
             else if (c == currentCell)
             {
                 GameObject m = Instantiate(moveBlock, c.transform.position, Quaternion.identity) as GameObject;
+                Instantiate(actCol, c.transform.position, Quaternion.identity);
                 m.GetComponent<Block>().number = c.number;
                 m.GetComponent<SpriteRenderer>().sortingOrder = 20;
                 m.GetComponent<MovingBlock>().number.sortingOrder = 25;
@@ -307,6 +310,8 @@ public class Grid : MonoBehaviour
             i = 0;
         }
         currentCell.SetNumber(i);
+
+        Destroy(GameObject.FindGameObjectWithTag("ActiveCol"));
 
         GameObject g = Instantiate(_animation(), currentCell.transform.position, Quaternion.identity) as GameObject;
 
