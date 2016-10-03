@@ -26,7 +26,6 @@ public class MovingBlock : MonoBehaviour
         block = GetComponent<Block>();
         ps = particles.GetComponent<ParticleSystem>();
         ps.Pause(true);
-
     }
 
     void Update()
@@ -35,6 +34,8 @@ public class MovingBlock : MonoBehaviour
 
         if (target)
         {
+            fadeShape();
+
             if (dist > 0.5)
             {
                 Quaternion rot = Quaternion.LookRotation(target.position - ps.transform.position);
@@ -55,6 +56,11 @@ public class MovingBlock : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    public void fadeShape()
+    {
+        block.spriterNum.color = Color.Lerp(block.spriterNum.color, block.spriterBlock.color, 0.05f);
     }
 
     public void SetTarget(Transform t)

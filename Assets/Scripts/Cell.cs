@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Cell : ColorElement
 {
     public Grid grid;
-    //public ChangeCursor cursor;
+    public ChangeCursor cursor;
 
     //public GameObject roll;
 
@@ -19,7 +19,7 @@ public class Cell : ColorElement
     {
         //roll.SetActive(false);
         col = GetComponent<Collider2D>();
-        //cursor = FindObjectOfType<ChangeCursor>();
+        cursor = FindObjectOfType<ChangeCursor>();
         pos = transform.position;
         grid = FindObjectOfType<Grid>();
         //isNew = false;
@@ -33,14 +33,14 @@ public class Cell : ColorElement
             SetUp();
         }
 
-        //if (cursor.isSpecialState)
-        //{
-        //    col.enabled = true;
-        //}
-        //else
-        //{
-        //    col.enabled = false;
-        //}
+        if (cursor.isSpecialState)
+        {
+            col.enabled = true;
+        }
+        else
+        {
+            col.enabled = false;
+        }
 
         if (isReadyToChange)
         {
@@ -87,20 +87,20 @@ public class Cell : ColorElement
 
     void OnMouseDown()
     {
-        //switch (cursor.currentState)
-        //{
-        //    case ChangeCursor.State.regular:
-        //        break;
-        //    case ChangeCursor.State.change:
-        //        Action(1);
-        //        break;
-        //    case ChangeCursor.State.up:
-        //        Action(2);
-        //        break;
-        //    case ChangeCursor.State.clear:
-        //        Action(3);
-        //        break;
-        //}
+        switch (cursor.currentState)
+        {
+            case ChangeCursor.State.regular:
+                break;
+            case ChangeCursor.State.change:
+                Action(1);
+                break;
+            case ChangeCursor.State.up:
+                Action(2);
+                break;
+            case ChangeCursor.State.clear:
+                Action(3);
+                break;
+        }
     }
 
     public void Action(int i)
@@ -175,6 +175,6 @@ public class Cell : ColorElement
 
     void Break()
     {
-        //cursor.SetCursorState(ChangeCursor.State.regular);
+        cursor.SetCursorState(ChangeCursor.State.regular);
     }
 }

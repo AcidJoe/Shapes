@@ -7,6 +7,8 @@ public class Grid : MonoBehaviour
     public GameObject cellPrefab;
     public GameObject moveBlock;
 
+    public Collider2D col;
+
     public GameObject t1;
     public GameObject t2;
     public GameObject t3;
@@ -398,6 +400,19 @@ public class Grid : MonoBehaviour
 
             cursor.SetCursorState(ChangeCursor.State.regular);
             CheckMatches();
+        }
+    }
+
+    public void ActivateCollider(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                col.enabled = false;
+                break;
+            case 1:
+                col.enabled = true;
+                break;
         }
     }
 }
