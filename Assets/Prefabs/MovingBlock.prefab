@@ -694,7 +694,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 10
+      scalar: 15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1313,7 +1313,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 2
     z:
-      scalar: 1
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:

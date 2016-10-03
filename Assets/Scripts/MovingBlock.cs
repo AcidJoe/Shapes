@@ -50,6 +50,7 @@ public class MovingBlock : MonoBehaviour
             sh.radius = dist / 2;
 
             transform.localScale -= new Vector3(Time.deltaTime * 0.3f, Time.deltaTime * 0.3f);
+            transform.Translate((target.position - transform.position) * Time.deltaTime * 0.3f);
 
             if(dist < 0.2)
             {
