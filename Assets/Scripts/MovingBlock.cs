@@ -49,8 +49,8 @@ public class MovingBlock : MonoBehaviour
             var sh = ps.shape;
             sh.radius = dist / 2;
 
-            transform.localScale -= new Vector3(Time.deltaTime * 0.3f, Time.deltaTime * 0.3f);
-            transform.Translate((target.position - transform.position) * Time.deltaTime * 0.3f);
+            transform.localScale -= new Vector3(Time.deltaTime * 0.5f, Time.deltaTime * 0.5f);
+            transform.Translate((target.position - transform.position) * Time.deltaTime * 0.8f);
 
             if(dist < 0.2)
             {
