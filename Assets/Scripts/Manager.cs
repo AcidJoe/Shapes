@@ -21,7 +21,7 @@ public class Manager : MonoBehaviour
 	void Start ()
     {
         gridMax = 3;
-        spawnPoint = new Vector3(2, -2);
+        spawnPoint = new Vector3(2, -1.7f);
         //cursor = FindObjectOfType<ChangeCursor>();
 	}
 	

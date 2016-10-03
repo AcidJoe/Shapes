@@ -25,7 +25,7 @@ public class MovingBlock : MonoBehaviour
         isSet = false;
         block = GetComponent<Block>();
         ps = particles.GetComponent<ParticleSystem>();
-        ps.Pause();
+        ps.Pause(true);
 
     }
 
@@ -46,7 +46,7 @@ public class MovingBlock : MonoBehaviour
             }
 
             var sh = ps.shape;
-            sh.radius = dist / 3;
+            sh.radius = dist / 2;
 
             transform.localScale -= new Vector3(Time.deltaTime * 0.3f, Time.deltaTime * 0.3f);
 
@@ -67,7 +67,7 @@ public class MovingBlock : MonoBehaviour
         border.SetActive(false);
         ps.startColor = block.spriterBlock.color;
 
-        ps.Play();
+        ps.Play(true);
         isSet = true;
     }
 
