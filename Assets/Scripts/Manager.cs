@@ -18,19 +18,28 @@ public class Manager : MonoBehaviour
 
     public ChangeCursor cursor;
 
-    void Start ()
+    public UIManager ui;
+
+    void Start()
     {
         gridMax = 3;
         spawnPoint = new Vector3(2, -1.7f);
         cursor = FindObjectOfType<ChangeCursor>();
+        ui = GetComponent<UIManager>();
     }
-	
-	void Update ()
+
+    void Update()
     {
         grid = FindObjectOfType<Grid>();
         blocks = FindObjectsOfType<Block>();
 
-        if(blocks.Length < 1 && !grid.isCheck)
+        if (!grid.CheckPossible())
+        {
+            grid.isEnd = true;
+            GameOver();
+        }
+
+        if (blocks.Length < 1 && !grid.isCheck && !grid.isEnd)
         {
             SpawnBlock();
         }
@@ -70,21 +79,90 @@ public class Manager : MonoBehaviour
 
     public void Remove()
     {
-        Destroy(currentBlock);
+        CheckRemove();
     }
 
     public void UpShape()
     {
-        cursor.changeState(2);
+        Check(2);
     }
 
     public void Clear()
     {
-        cursor.changeState(3);
+        Check(3);
     }
 
     public void Change()
     {
-        cursor.changeState(1);
+        Check(1);
+    }
+
+    bool CheckCost()
+    {
+        if (Game.player.money - Game.specialCost >= 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    void Check(int i)
+    {
+        int count = 0;
+        foreach (Cell c in grid.cells)
+        {
+            if (c.number > 0)
+            {
+                count++;
+            }
+        }
+
+        if (count >= 2)
+        {
+            if (CheckCost())
+            {
+                cursor.changeState(i);
+                //Game.Pay();
+                //Game.IncreaseCost();
+            }
+            else
+            {
+                StartCoroutine(ui.Error(1));
+            }
+        }
+        else
+        {
+            StartCoroutine(ui.Error(2));
+        }
+    }
+
+    void CheckRemove()
+    {
+        if (CheckCost())
+        {
+            Destroy(currentBlock);
+            Game.Pay();
+            Game.IncreaseCost();
+        }
+        else
+        {
+            StartCoroutine(ui.Error(1));
+        }
+    }
+
+    void GameOver()
+    {
+        foreach(Cell c in grid.cells)
+        {
+            c.gameObject.SetActive(false);
+        }
+        ui.GameOver();
+    }
+
+    public void Return()
+    {
+        Game.player.money += Game.MoneyGet();
+        Game.GoToScene(0);
     }
 }
