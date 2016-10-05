@@ -34,4 +34,9 @@ public static class Game
     {
         player.money -= specialCost;
     }
+
+    public static int MoneyGet()
+    {
+        return matches * 2;
+    }
 }

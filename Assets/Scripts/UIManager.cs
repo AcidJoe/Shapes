@@ -12,9 +12,14 @@ public class UIManager : MonoBehaviour
 
     public Text error;
 
+    public GameObject gameOverPanel;
+    public Text matches;
+    public Text moneyGet;
+
     void Start()
     {
         error.gameObject.SetActive(false);
+        gameOverPanel.SetActive(false);
     }
 
     void Update()
@@ -39,5 +44,13 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         error.gameObject.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        matches.text = Game.matches.ToString();
+        moneyGet.text = Game.MoneyGet().ToString();
+
+        gameOverPanel.SetActive(true);
     }
 }

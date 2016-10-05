@@ -33,7 +33,13 @@ public class Manager : MonoBehaviour
         grid = FindObjectOfType<Grid>();
         blocks = FindObjectsOfType<Block>();
 
-        if (blocks.Length < 1 && !grid.isCheck)
+        if (!grid.CheckPossible())
+        {
+            grid.isEnd = true;
+            GameOver();
+        }
+
+        if (blocks.Length < 1 && !grid.isCheck && !grid.isEnd)
         {
             SpawnBlock();
         }
@@ -117,8 +123,8 @@ public class Manager : MonoBehaviour
             if (CheckCost())
             {
                 cursor.changeState(i);
-                Game.Pay();
-                Game.IncreaseCost();
+                //Game.Pay();
+                //Game.IncreaseCost();
             }
             else
             {
@@ -143,5 +149,20 @@ public class Manager : MonoBehaviour
         {
             StartCoroutine(ui.Error(1));
         }
+    }
+
+    void GameOver()
+    {
+        foreach(Cell c in grid.cells)
+        {
+            c.gameObject.SetActive(false);
+        }
+        ui.GameOver();
+    }
+
+    public void Return()
+    {
+        Game.player.money += Game.MoneyGet();
+        Game.GoToScene(0);
     }
 }

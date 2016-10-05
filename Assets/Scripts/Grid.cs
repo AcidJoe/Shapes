@@ -31,6 +31,7 @@ public class Grid : MonoBehaviour
 
     public bool isCheck;
     public bool isMove;
+    public bool isEnd;
     public static bool isAnimation;
 
     ChangeCursor cursor;
@@ -39,6 +40,7 @@ public class Grid : MonoBehaviour
     {
         cursor = FindObjectOfType<ChangeCursor>();
 
+        isEnd = false;
         isMove = false;
         isCheck = false;
         newCells = new List<Cell>();
@@ -273,6 +275,7 @@ public class Grid : MonoBehaviour
     public IEnumerator VisualizeChain(List<Cell> chain)
     {
         isMove = true;
+        Game.matches++;
 
         foreach (Cell c in chain)
         {
@@ -414,5 +417,25 @@ public class Grid : MonoBehaviour
                 col.enabled = true;
                 break;
         }
+    }
+
+    public bool CheckPossible()
+    {
+        int count = 0;
+
+        foreach(Cell c in cells)
+        {
+            if(c.number != 0)
+            {
+                count++;
+            }
+        }
+
+        if(count == 25)
+        {
+            return false;
+        }
+
+        return true;
     }
 }

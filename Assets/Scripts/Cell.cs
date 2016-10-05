@@ -117,6 +117,9 @@ public class Cell : ColorElement
                 Clear();
                 break;
         }
+
+        Game.Pay();
+        Game.IncreaseCost();
     }
 
     public void Up()
