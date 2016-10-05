@@ -53,6 +53,8 @@ GameObject:
   - 4: {fileID: 4000011588445248}
   - 212: {fileID: 212000012566744168}
   - 114: {fileID: 114000011632181288}
+  - 58: {fileID: 58000011531012748}
+  - 50: {fileID: 50000012837085170}
   m_Layer: 0
   m_Name: Cell
   m_TagString: Untagged
@@ -93,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013537301420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -101,6 +103,37 @@ Transform:
   - {fileID: 4000010893284378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &50000012837085170
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013537301420}
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &58000011531012748
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013537301420}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.44642857
 --- !u!114 &114000011632181288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,6 +176,7 @@ MonoBehaviour:
   - {r: 0.40392157, g: 0.40784314, b: 0.96862745, a: 1}
   - {r: 1, g: 0, b: 0, a: 1}
   grid: {fileID: 0}
+  cursor: {fileID: 0}
   col: {fileID: 0}
   pos: {x: 0, y: 0, z: 0}
   isReadyToChange: 0

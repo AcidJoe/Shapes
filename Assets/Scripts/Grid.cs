@@ -7,11 +7,15 @@ public class Grid : MonoBehaviour
     public GameObject cellPrefab;
     public GameObject moveBlock;
 
+    public Collider2D col;
+
     public GameObject t1;
     public GameObject t2;
     public GameObject t3;
     public GameObject t4;
     public GameObject t5;
+
+    public GameObject actCol;
 
     public Cell[] cells;
 
@@ -24,7 +28,6 @@ public class Grid : MonoBehaviour
     public List<Cell> newCells;
     public List<Cell> forChange;
     public MovingBlock[] movingBlocks;
-    public Tunel[] tunels;
 
     public bool isCheck;
     public bool isMove;
@@ -54,14 +57,12 @@ public class Grid : MonoBehaviour
     {
         cells = FindObjectsOfType<Cell>();
         movingBlocks = FindObjectsOfType<MovingBlock>();
-        tunels = FindObjectsOfType<Tunel>();
 
         if (isMove)
         {
             if (movingBlocks.Length == 1)
             {
-                movingBlocks[0].SetTarget(currentCell.transform);
-                movingBlocks[0].SetDestination(currentCell.transform);
+                movingBlocks[0]._destroy();
             }
             if (movingBlocks.Length <= 0)
             {
@@ -280,13 +281,13 @@ public class Grid : MonoBehaviour
                 GameObject m = Instantiate(moveBlock, c.transform.position, Quaternion.identity) as GameObject;
                 m.GetComponent<Block>().number = c.number;
                 m.GetComponent<MovingBlock>().SetTarget(currentCell.transform);
-                m.GetComponent<MovingBlock>().SetDestination(path(c, currentCell, chain));
                 //c.spriterNum.sortingOrder = 0;
                 c.SetNumber(0);
             }
             else if (c == currentCell)
             {
                 GameObject m = Instantiate(moveBlock, c.transform.position, Quaternion.identity) as GameObject;
+                Instantiate(actCol, c.transform.position, Quaternion.identity);
                 m.GetComponent<Block>().number = c.number;
                 m.GetComponent<SpriteRenderer>().sortingOrder = 20;
                 m.GetComponent<MovingBlock>().number.sortingOrder = 25;
@@ -312,12 +313,9 @@ public class Grid : MonoBehaviour
         }
         currentCell.SetNumber(i);
 
-        GameObject g = Instantiate(_animation(), currentCell.transform.position, Quaternion.identity) as GameObject;
+        Destroy(GameObject.FindGameObjectWithTag("ActiveCol"));
 
-        foreach (Tunel t in tunels)
-        {
-            Destroy(t.gameObject);
-        }
+        GameObject g = Instantiate(_animation(), currentCell.transform.position, Quaternion.identity) as GameObject;
 
         //foreach (Cell c in chain)
         //{
@@ -364,27 +362,6 @@ public class Grid : MonoBehaviour
         return t1;
     }
 
-    public Transform path(Cell from, Cell to, List<Cell> chain)
-    {
-        Transform t = from.transform;
-
-        if (from.neighbours().Contains(to))
-        {
-            t = to.transform;
-        }
-        else
-        {
-            foreach (Cell c in from.neighbours())
-            {
-                if (c.neighbours().Contains(to) && chain.Contains(c))
-                {
-                    t = c.transform;
-                }
-            }
-        }
-        return t;
-    }
-
     public IEnumerator Star(Cell c)
     {
         yield return new WaitWhile(() => isMove == true);
@@ -423,6 +400,19 @@ public class Grid : MonoBehaviour
 
             cursor.SetCursorState(ChangeCursor.State.regular);
             CheckMatches();
+        }
+    }
+
+    public void ActivateCollider(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                col.enabled = false;
+                break;
+            case 1:
+                col.enabled = true;
+                break;
         }
     }
 }

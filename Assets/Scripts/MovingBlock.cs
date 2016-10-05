@@ -7,26 +7,61 @@ public class MovingBlock : MonoBehaviour
     public Block block;
     Transform target;
 
-    public GameObject tunel;
-
-    Transform destination;
-
     public List<Transform> path = new List<Transform>();
 
     public SpriteRenderer number;
+    public GameObject border;
+
+    public GameObject particles;
+    public ParticleSystem ps;
+
+    public Transform dot1, dot2;
+    public float dist;
+
+    public bool isSet;
 
     void Awake()
     {
+        isSet = false;
         block = GetComponent<Block>();
+        ps = particles.GetComponent<ParticleSystem>();
+        ps.Pause(true);
     }
 
     void Update()
     {
-        if (target && destination)
+        dist = Vector3.Distance(dot1.position, dot2.position);
+
+        if (target)
         {
-            transform.Translate((destination.position - transform.position).normalized * Time.deltaTime);
-            _destroy();
+            fadeShape();
+
+            if (dist > 0.5)
+            {
+                Quaternion rot = Quaternion.LookRotation(target.position - ps.transform.position);
+                ps.transform.rotation = rot;
+            }
+            if (!isSet)
+            {
+                Setup();
+            }
+
+            var sh = ps.shape;
+            sh.radius = dist / 2;
+
+            transform.localScale -= new Vector3(Time.deltaTime * 0.5f, Time.deltaTime * 0.5f);
+            transform.Translate((target.position - transform.position) * Time.deltaTime * 0.8f);
+
+            if(dist < 0.2)
+            {
+                Destroy(gameObject);
+            }
         }
+    }
+
+    public void fadeShape()
+    {
+        block.spriterNum.color = Color.Lerp(block.spriterNum.color, block.spriterBlock.color, 0.05f);
     }
 
     public void SetTarget(Transform t)
@@ -34,54 +69,17 @@ public class MovingBlock : MonoBehaviour
         target = t;
     }
 
-    public void SetDestination(Transform d)
+    public void Setup()
     {
-        destination = d;
+        border.SetActive(false);
+        ps.startColor = block.spriterBlock.color;
 
-        //GameObject tun;
-
-        //if (transform.position.x != d.position.x)
-        //{
-        //    if (transform.position.x > d.position.x)
-        //    {
-        //        tun = Instantiate(tunel, new Vector3(d.position.x + .5f, d.position.y), Quaternion.identity) as GameObject;
-        //        //tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
-        //    }
-        //    else if (transform.position.x < d.position.x)
-        //    {
-        //        tun = Instantiate(tunel, new Vector3(d.position.x - .5f, d.position.y), Quaternion.identity) as GameObject;
-        //        //tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
-        //    }
-        //}
-        //else if (transform.position.y != d.position.y)
-        //{
-        //    if (transform.position.y > d.position.y)
-        //    {
-        //        tun = Instantiate(tunel, new Vector3(d.position.x, d.position.y + .5f), Quaternion.Euler(0, 0, 90)) as GameObject;
-        //        //tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
-        //    }
-        //    else if (transform.position.y < d.position.y)
-        //    {
-        //        tun = Instantiate(tunel, new Vector3(d.position.x, d.position.y - .5f), Quaternion.Euler(0, 0, 90)) as GameObject;
-        //        //tun.GetComponent<Tunel>().SetColor(block.colors[block.number]);
-        //    }
-        //}
-
-        if(destination == target)
-        {
-            destination = target;
-        }
+        ps.Play(true);
+        isSet = true;
     }
 
-    void _destroy()
+    public void _destroy()
     {
-        if(Vector3.Distance(transform.position, target.position) < 0.01f)
-        {
-            Destroy(gameObject);
-        }
-        else if(Vector3.Distance(transform.position, destination.position) < 0.01f)
-        {
-            destination = target;
-        }
+        Destroy(gameObject);
     }
 }

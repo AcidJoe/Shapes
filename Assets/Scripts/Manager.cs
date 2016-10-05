@@ -16,14 +16,14 @@ public class Manager : MonoBehaviour
 
     public Grid grid;
 
-    //public ChangeCursor cursor;
+    public ChangeCursor cursor;
 
-	void Start ()
+    void Start ()
     {
         gridMax = 3;
-        spawnPoint = new Vector3(2, -2);
-        //cursor = FindObjectOfType<ChangeCursor>();
-	}
+        spawnPoint = new Vector3(2, -1.7f);
+        cursor = FindObjectOfType<ChangeCursor>();
+    }
 	
 	void Update ()
     {
@@ -35,14 +35,14 @@ public class Manager : MonoBehaviour
             SpawnBlock();
         }
 
-        //if (cursor.isSpecialState)
-        //{
-        //    if (Input.GetMouseButtonDown(1))
-        //    {
-        //        cursor.changeState(0);
-        //    }
-        //}
-	}
+        if (cursor.isSpecialState)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                cursor.changeState(0);
+            }
+        }
+    }
 
     void SpawnBlock()
     {
@@ -75,16 +75,16 @@ public class Manager : MonoBehaviour
 
     public void UpShape()
     {
-        //cursor.changeState(2);
+        cursor.changeState(2);
     }
 
     public void Clear()
     {
-        //cursor.changeState(3);
+        cursor.changeState(3);
     }
 
     public void Change()
     {
-        //cursor.changeState(1);
+        cursor.changeState(1);
     }
 }
