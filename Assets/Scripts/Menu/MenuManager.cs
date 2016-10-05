@@ -43,4 +43,10 @@ public class MenuManager : MonoBehaviour
         Game.isReady = true;
         mainMenu.SetActive(true);
     }
+
+    public void StartGame()
+    {
+        Game.SetDefaults();
+        Game.GoToScene(1);
+    }
 }
