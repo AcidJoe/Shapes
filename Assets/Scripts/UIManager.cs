@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public Text matches;
     public Text moneyGet;
 
+    public Text[] counts;
+
     void Start()
     {
         error.gameObject.SetActive(false);
@@ -27,6 +29,11 @@ public class UIManager : MonoBehaviour
         money.text = Game.player.money.ToString();
 
         changeCost.text = removeCost.text = clearCost.text = upShapeCost.text = Game.specialCost.ToString();
+
+        for(int i = 0; i < 6; i++)
+        {
+            counts[i].text = Game.shapes[i].ToString();
+        }
     }
 
     public IEnumerator Error(int i)

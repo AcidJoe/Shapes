@@ -1682,6 +1682,14 @@ MonoBehaviour:
   gameOverPanel: {fileID: 164430835}
   matches: {fileID: 682561728}
   moneyGet: {fileID: 568911222}
+  counts:
+  - {fileID: 1660709007}
+  - {fileID: 1641364330}
+  - {fileID: 1022901919}
+  - {fileID: 1438480312}
+  - {fileID: 1686134613}
+  - {fileID: 699499877}
+  - {fileID: 1971248645}
 --- !u!1 &1218251585
 GameObject:
   m_ObjectHideFlags: 0
