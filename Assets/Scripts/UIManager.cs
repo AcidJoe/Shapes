@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
 
         changeCost.text = removeCost.text = clearCost.text = upShapeCost.text = Game.specialCost.ToString();
 
-        for(int i = 0; i < 6; i++)
+        for(int i = 0; i < 7; i++)
         {
             counts[i].text = Game.shapes[i].ToString();
         }
