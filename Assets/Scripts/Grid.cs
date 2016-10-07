@@ -143,23 +143,6 @@ public class Grid : MonoBehaviour
 
             if (currentMatch.Count >= 3)
             {
-                //foreach (Cell c in currentMatch)
-                //{
-                //    if (c != currentCell)
-                //    {
-                //        c.SetNumber(0);
-                //    }
-                //    else if (c == currentCell)
-                //    {
-                //        int i = c.number + 1;
-                //        if (i > 7)
-                //            i = 0;
-                //        c.SetNumber(i);
-                //    }
-                //}
-
-                //CheckMatches();
-
                 StartCoroutine(VisualizeChain(currentMatch));
             }
             else
@@ -284,7 +267,6 @@ public class Grid : MonoBehaviour
                 GameObject m = Instantiate(moveBlock, c.transform.position, Quaternion.identity) as GameObject;
                 m.GetComponent<Block>().number = c.number;
                 m.GetComponent<MovingBlock>().SetTarget(currentCell.transform);
-                //c.spriterNum.sortingOrder = 0;
                 c.SetNumber(0);
             }
             else if (c == currentCell)
@@ -294,13 +276,7 @@ public class Grid : MonoBehaviour
                 m.GetComponent<Block>().number = c.number;
                 m.GetComponent<SpriteRenderer>().sortingOrder = 20;
                 m.GetComponent<MovingBlock>().number.sortingOrder = 25;
-                //int i = c.number + 1;
-                //if (i > 7)
-                //{
-                //    StartCoroutine(Star(currentCell));
-                //    i = 0;
-                //}
-                //c.SetNumber(i);
+                Game.shapes[c.number - 1]++;
             }
         }
 
@@ -320,14 +296,6 @@ public class Grid : MonoBehaviour
 
         GameObject g = Instantiate(_animation(), currentCell.transform.position, Quaternion.identity) as GameObject;
 
-        //foreach (Cell c in chain)
-        //{
-        //    if (c != currentCell)
-        //    {
-        //        c.SetNumber(0);
-        //        c.spriterNum.sortingOrder = 1;
-        //    }
-        //}
         yield return new WaitForSeconds(1);
 
         isAnimation = false;

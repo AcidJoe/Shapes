@@ -19,7 +19,6 @@ public class MenuManager : MonoBehaviour
             loginPanel.SetActive(true);
             mainMenu.SetActive(false);
         }
-
 	}
 	
 	void Update ()

@@ -13,6 +13,8 @@ public static class Game
     public static bool isReady = false;
     public static bool isStart = false;
 
+    public static int[] shapes;
+
     public static void GoToScene(int i)
     {
         SceneManager.LoadScene(i);
@@ -23,6 +25,8 @@ public static class Game
         matches = 0;
 
         specialCost = 50;
+
+        shapes = new int[] { 0, 0, 0, 0, 0, 0, 0};
     }
 
     public static void IncreaseCost()
