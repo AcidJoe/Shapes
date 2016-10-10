@@ -145,8 +145,8 @@ MonoBehaviour:
   nums:
   - {fileID: 0}
   - {fileID: 21300000, guid: 44564b0066dc95849928dbb697f0ba69, type: 3}
-  - {fileID: 21300000, guid: 3a6972454916b0d44b02b62beff2bd3d, type: 3}
-  - {fileID: 21300000, guid: 9e4c38333fca12740b826d82cb38b5fb, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 21300000, guid: 28030c0814e3d364a9374a9554f1cc15, type: 3}
   - {fileID: 21300000, guid: 06258e8fbb0ee1e47bd5d0e210d178dc, type: 3}
   - {fileID: 21300000, guid: 80eccb58a19ac034c9e9920a1deea0e0, type: 3}
