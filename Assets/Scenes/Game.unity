@@ -2595,48 +2595,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1001 &1432212686
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000014043994984, guid: 40d8cf1702e79e841b8c8daf52fbc559, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -3.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014043994984, guid: 40d8cf1702e79e841b8c8daf52fbc559, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.73
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014043994984, guid: 40d8cf1702e79e841b8c8daf52fbc559, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014043994984, guid: 40d8cf1702e79e841b8c8daf52fbc559, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014043994984, guid: 40d8cf1702e79e841b8c8daf52fbc559, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014043994984, guid: 40d8cf1702e79e841b8c8daf52fbc559, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014043994984, guid: 40d8cf1702e79e841b8c8daf52fbc559, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000014043994984, guid: 40d8cf1702e79e841b8c8daf52fbc559, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 40d8cf1702e79e841b8c8daf52fbc559, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1438480310
 GameObject:
   m_ObjectHideFlags: 0
@@ -4350,6 +4308,7 @@ MonoBehaviour:
   t3: {fileID: 1000013290307250, guid: 40d8cf1702e79e841b8c8daf52fbc559, type: 2}
   t4: {fileID: 1000013227388136, guid: cdd458e706bd6a044897b1c9472ac760, type: 2}
   t5: {fileID: 1000013272080280, guid: 4ed56f6e774a68548a69fae6feac6e6f, type: 2}
+  t6: {fileID: 1000012024952030, guid: 05cd55bb1602d7a4982265394066b11d, type: 2}
   actCol: {fileID: 1000010898183414, guid: 34a2b3fd64a171847a373c58b9f19104, type: 2}
   cells: []
   first: {fileID: 0}

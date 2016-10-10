@@ -14,6 +14,7 @@ public class Grid : MonoBehaviour
     public GameObject t3;
     public GameObject t4;
     public GameObject t5;
+    public GameObject t6;
 
     public GameObject actCol;
 
@@ -328,6 +329,8 @@ public class Grid : MonoBehaviour
                 return t4;
             case 5:
                 return t5;
+            case 6:
+                return t6;
         }
 
         return t1;
