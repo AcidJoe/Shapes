@@ -26,6 +26,12 @@ public class Manager : MonoBehaviour
         spawnPoint = new Vector3(2, -1.7f);
         cursor = FindObjectOfType<ChangeCursor>();
         ui = GetComponent<UIManager>();
+
+        if(Game.player == null)
+        {
+            Game.player = new Profile("Test");
+            Game.SetDefaults();
+        }
     }
 
     void Update()
