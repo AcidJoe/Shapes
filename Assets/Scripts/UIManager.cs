@@ -14,8 +14,9 @@ public class UIManager : MonoBehaviour
 
     public bool isGameOver;
     public bool isLevelFill;
+    public bool needWait;
 
-    float timer;
+    public float fill;
     public float fillTimer;
 
     public GameObject gameOverPanel;
@@ -23,11 +24,16 @@ public class UIManager : MonoBehaviour
     public Image levelBar;
     public Text playerLevel;
 
+    public float curAmount;
+    public float nextAmount;
+    public float changeBar;
+
     public GameObject MoneyPanel;
 
     void Start()
     {
-        timer = 5;
+        needWait = false;
+        curAmount = 0;
         isGameOver = false;
         error.gameObject.SetActive(false);
         gameOverPanel.SetActive(false);
@@ -35,7 +41,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        timer -= Time.deltaTime;
+        fill += fillTimer * Time.deltaTime;
         money.text = Game.player.money.ToString();
 
         changeCost.text = removeCost.text = clearCost.text = upShapeCost.text = Game.specialCost.ToString();
@@ -44,17 +50,11 @@ public class UIManager : MonoBehaviour
         {
             if (isLevelFill)
             {
-                levelBar.fillAmount = (float)Game.player.exp / (float)Game.player.exp_to_next;
-                playerLevel.text = Game.player.lvl.ToString();
-
-                if(timer <= 0)
+                if(!needWait)
                 {
                     if(Game.matches - 1 >= 0)
                     {
-                        Game.matches--;
-                        Game.player.exp++;
-
-                        timer = fillTimer;
+                        StartCoroutine(filler());
                     }
                     else
                     {
@@ -62,6 +62,9 @@ public class UIManager : MonoBehaviour
                     }
                 }
             }
+
+            levelBar.fillAmount = changeBar;
+            playerLevel.text = Game.player.lvl.ToString();
         }
     }
 
@@ -102,5 +105,21 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(2);
 
         MoneyPanel.SetActive(true);
+    }
+
+    public IEnumerator filler()
+    {
+        needWait = true;
+        Game.matches--;
+        Game.player.exp++;
+
+        nextAmount = (float)Game.player.exp / (float)Game.player.exp_to_next;
+
+        changeBar = Mathf.Lerp(curAmount, nextAmount, fill);
+
+        yield return new WaitForSeconds(fillTimer);
+
+        curAmount = nextAmount;
+        needWait = false;
     }
 }
