@@ -20,6 +20,8 @@ public class Profile
         lvl = 1;
         exp = 0;
 
+        exp_to_next = 20;
+
         money = 1000;
     }
 }

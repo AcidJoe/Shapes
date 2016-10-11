@@ -157,13 +157,14 @@ public class Manager : MonoBehaviour
         }
     }
 
-    void GameOver()
+    public void GameOver()
     {
         foreach(Cell c in grid.cells)
         {
             c.gameObject.SetActive(false);
         }
-        ui.GameOver();
+
+        StartCoroutine(ui.GameOver());
     }
 
     public void Return()
