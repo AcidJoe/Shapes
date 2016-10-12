@@ -153,7 +153,6 @@ public class UIManager : MonoBehaviour
                 Game.playerMoney++;
 
                 nextAmount = (float)Game.playerMoney / (float)Game.allMoney;
-                Debug.Log(curAmount + "   " + nextAmount);
                 break;
         }
 
