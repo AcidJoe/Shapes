@@ -15,8 +15,8 @@ public class UIManager : MonoBehaviour
     public bool isGameOver;
     public bool isLevelFill;
     public bool needWait;
+    public bool isMoneyFill;
 
-    public float fill;
     public float fillTimer;
 
     public GameObject gameOverPanel;
@@ -26,9 +26,11 @@ public class UIManager : MonoBehaviour
 
     public float curAmount;
     public float nextAmount;
-    public float changeBar;
 
     public GameObject MoneyPanel;
+
+    public Image moneyBar;
+    public Text moneyGet;
 
     void Start()
     {
@@ -41,7 +43,6 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-        fill += fillTimer * Time.deltaTime;
         money.text = Game.player.money.ToString();
 
         changeCost.text = removeCost.text = clearCost.text = upShapeCost.text = Game.specialCost.ToString();
@@ -54,17 +55,47 @@ public class UIManager : MonoBehaviour
                 {
                     if(Game.matches - 1 >= 0)
                     {
-                        StartCoroutine(filler());
+                        StartCoroutine(filler("level"));
                     }
                     else
                     {
                         isLevelFill = false;
                     }
                 }
-            }
 
-            levelBar.fillAmount = changeBar;
-            playerLevel.text = Game.player.lvl.ToString();
+                curAmount = levelBar.fillAmount;
+                if(curAmount >= nextAmount)
+                {
+                    needWait = false;
+                }
+
+                levelBar.fillAmount += fillTimer * Time.deltaTime;
+                playerLevel.text = Game.player.lvl.ToString();
+            }
+            else if (isMoneyFill)
+            {
+                if (!needWait)
+                {
+                    if (Game.money - 1 >= 0)
+                    {
+                        StartCoroutine(filler("money"));
+                    }
+                    else
+                    {
+                        isMoneyFill = false;
+                    }
+                }
+
+                curAmount = moneyBar.fillAmount;
+
+                if (curAmount >= nextAmount)
+                {
+                    needWait = false;
+                }
+
+                moneyBar.fillAmount += fillTimer * Time.deltaTime;
+                moneyGet.text = Game.playerMoney.ToString();
+            }
         }
     }
 
@@ -97,29 +128,49 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator FillLevel()
     {
-        fillTimer = 3 / (float)Game.matches;
-        Debug.Log(fillTimer);
+        levelBar.fillAmount = 0;
         isLevelFill = true;
 
         yield return new WaitWhile(() => isLevelFill);
         yield return new WaitForSeconds(2);
 
-        MoneyPanel.SetActive(true);
+        StartCoroutine(fillMoney());
     }
 
-    public IEnumerator filler()
+    public IEnumerator filler(string operation)
     {
         needWait = true;
-        Game.matches--;
-        Game.player.exp++;
+        switch (operation)
+        {
+            case "level":
+                Game.matches--;
+                Game.player.exp++;
 
-        nextAmount = (float)Game.player.exp / (float)Game.player.exp_to_next;
+                nextAmount = (float)Game.player.exp / (float)Game.player.exp_to_next;
+                break;
+            case "money":
+                Game.money--;
+                Game.playerMoney++;
 
-        changeBar = Mathf.Lerp(curAmount, nextAmount, fill);
+                nextAmount = (float)Game.playerMoney / (float)Game.allMoney;
+                Debug.Log(curAmount + "   " + nextAmount);
+                break;
+        }
 
-        yield return new WaitForSeconds(fillTimer);
+        yield return new WaitWhile(() => needWait);
 
         curAmount = nextAmount;
-        needWait = false;
+    }
+
+    public IEnumerator fillMoney()
+    {
+        MoneyPanel.SetActive(true);
+        moneyBar.fillAmount = 0;
+        Game.money = Game.allMoney = Game.MoneyGet();
+        Game.playerMoney = 0;
+        isMoneyFill = true;
+
+        yield return new WaitWhile(() => isMoneyFill);
+        yield return new WaitForSeconds(2);
     }
 }

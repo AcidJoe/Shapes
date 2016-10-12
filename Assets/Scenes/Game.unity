@@ -496,7 +496,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &164430836
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2267,8 +2267,8 @@ MonoBehaviour:
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillClockwise: 0
+  m_FillOrigin: 2
 --- !u!222 &1095299350
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2513,11 +2513,17 @@ MonoBehaviour:
   error: {fileID: 2067930583}
   isGameOver: 0
   isLevelFill: 0
-  fillTimer: 0
+  needWait: 0
+  isMoneyFill: 0
+  fillTimer: 1
   gameOverPanel: {fileID: 164430835}
   levelBar: {fileID: 743630670}
   playerLevel: {fileID: 42000392}
+  curAmount: 0
+  nextAmount: 0
   MoneyPanel: {fileID: 1095299347}
+  moneyBar: {fileID: 1095299349}
+  moneyGet: {fileID: 240945946}
 --- !u!1 &1218251585
 GameObject:
   m_ObjectHideFlags: 0
@@ -3894,7 +3900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

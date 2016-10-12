@@ -7,6 +7,9 @@ public static class Game
     public static Profile player;
 
     public static int matches;
+    public static int money;
+    public static int playerMoney;
+    public static int allMoney;
     
     public static int specialCost;
 
@@ -41,6 +44,19 @@ public static class Game
 
     public static int MoneyGet()
     {
-        return matches * 2;
+        int _money = 0;
+
+        for(int i = 0; i < 6; i++)
+        {
+            if(i < 3)
+            {
+                _money += shapes[i] * 2;
+            }
+            else
+            {
+                _money += shapes[i] * 3;
+            }
+        }
+        return _money * 2;
     }
 }
