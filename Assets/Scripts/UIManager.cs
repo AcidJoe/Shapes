@@ -33,6 +33,9 @@ public class UIManager : MonoBehaviour
     public Text moneyGet;
     public Text fullMoney;
 
+    public Button home;
+    public Button replay;
+
     void Start()
     {
         needWait = false;
@@ -124,6 +127,8 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         isGameOver = true;
         StartCoroutine(FillLevel());
+        home.interactable = false;
+        replay.interactable = false;
 
         yield return new WaitWhile(() => isGameOver);
     }
@@ -134,7 +139,7 @@ public class UIManager : MonoBehaviour
         isLevelFill = true;
 
         yield return new WaitWhile(() => isLevelFill);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
 
         StartCoroutine(fillMoney());
     }
@@ -173,6 +178,9 @@ public class UIManager : MonoBehaviour
         isMoneyFill = true;
 
         yield return new WaitWhile(() => isMoneyFill);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+
+        home.interactable = true;
+        replay.interactable = true;
     }
 }

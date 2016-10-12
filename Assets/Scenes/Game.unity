@@ -2609,6 +2609,8 @@ MonoBehaviour:
   moneyBar: {fileID: 1095299349}
   moneyGet: {fileID: 240945946}
   fullMoney: {fileID: 281669220}
+  home: {fileID: 1008298078}
+  replay: {fileID: 65297705}
 --- !u!1 &1218251585
 GameObject:
   m_ObjectHideFlags: 0
