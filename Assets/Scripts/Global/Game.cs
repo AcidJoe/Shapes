@@ -26,6 +26,9 @@ public static class Game
     public static void SetDefaults()
     {
         matches = 0;
+        money = 0;
+        playerMoney = 0;
+        allMoney = 0;
 
         specialCost = 50;
 

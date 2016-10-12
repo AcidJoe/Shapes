@@ -169,7 +169,14 @@ public class Manager : MonoBehaviour
 
     public void Return()
     {
-        Game.player.money += Game.MoneyGet();
+        Game.player.money += Game.playerMoney;
         Game.GoToScene(0);
+    }
+
+    public void Replay()
+    {
+        Game.player.money += Game.playerMoney;
+        Game.SetDefaults();
+        Game.GoToScene(1);
     }
 }

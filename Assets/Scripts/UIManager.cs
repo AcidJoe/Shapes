@@ -31,6 +31,7 @@ public class UIManager : MonoBehaviour
 
     public Image moneyBar;
     public Text moneyGet;
+    public Text fullMoney;
 
     void Start()
     {
@@ -95,6 +96,7 @@ public class UIManager : MonoBehaviour
 
                 moneyBar.fillAmount += fillTimer * Time.deltaTime;
                 moneyGet.text = Game.playerMoney.ToString();
+                fullMoney.text = Game.allMoney.ToString();
             }
         }
     }
@@ -165,7 +167,8 @@ public class UIManager : MonoBehaviour
     {
         MoneyPanel.SetActive(true);
         moneyBar.fillAmount = 0;
-        Game.money = Game.allMoney = Game.MoneyGet();
+        Game.allMoney = Game.MoneyGet();
+        Game.money = Game.MoneyGet() / 2;
         Game.playerMoney = 0;
         isMoneyFill = true;
 
