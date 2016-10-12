@@ -12,6 +12,10 @@ public class UIManager : MonoBehaviour
 
     public Text error;
 
+    public Image[] functions;
+    public Color inactive;
+    public Color _activ;
+
     public bool isGameOver;
     public bool isLevelFill;
     public bool needWait;
@@ -182,5 +186,20 @@ public class UIManager : MonoBehaviour
 
         home.interactable = true;
         replay.interactable = true;
+    }
+
+    public void activeSkill(int i)
+    {
+        if(i == 0)
+        {
+            for(int j = 1; j < 4; j++)
+            {
+                functions[j].color = inactive;
+            }
+        }
+        else
+        {
+            functions[i].color = _activ;
+        }
     }
 }
