@@ -114,7 +114,7 @@ public class Cell : ColorElement
                 Up();
                 break;
             case 3:
-                Clear();
+                StartCoroutine(Clear());
                 break;
         }
 
@@ -167,7 +167,7 @@ public class Cell : ColorElement
         }
     }
 
-    public void Clear()
+    public IEnumerator Clear()
     {
         if (number != 0)
         {
@@ -175,6 +175,9 @@ public class Cell : ColorElement
             SetNumber(0);
             Break();
         }
+        isReadyToChange = true;
+        yield return new WaitForSeconds(1);
+        isReadyToChange = false;
     }
 
     void Break()
