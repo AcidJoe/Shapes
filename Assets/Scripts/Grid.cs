@@ -286,24 +286,35 @@ public class Grid : MonoBehaviour
 
         isAnimation = true;
 
+        bool isStar = false;
+
         int i = currentCell.number + 1;
         if (i > 7)
         {
             StartCoroutine(Star(currentCell));
-            i = 0;
+            isStar = true;
         }
-        currentCell.SetNumber(i);
+
+        if (!isStar)
+        {
+            currentCell.SetNumber(i);
+        }
 
         Destroy(GameObject.FindGameObjectWithTag("ActiveCol"));
 
-        GameObject g = Instantiate(_animation(), currentCell.transform.position, Quaternion.identity) as GameObject;
+        if (!isStar)
+        {
+            GameObject g = Instantiate(_animation(), currentCell.transform.position, Quaternion.identity) as GameObject;
 
-        yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1);
 
-        isAnimation = false;
-        Destroy(g);
+            isAnimation = false;
+            Destroy(g);
+        }
 
         yield return new WaitWhile(() => isAnimation == true);
+
+        isStar = false;
 
         foreach (Cell c in cells)
         {
@@ -370,11 +381,29 @@ public class Grid : MonoBehaviour
                 {
                     if (cell.transform.position == new Vector3(c.transform.position.x + x, c.transform.position.y + y))
                     {
+                        cell.isReadyToChange = true;
+
+                        if(cell.number > 0)
+                        {
+                            GameObject m = Instantiate(outBlock, cell.pos, Quaternion.identity) as GameObject;
+                            m.GetComponent<Block>().number = cell.number;
+                            StartCoroutine(m.GetComponent<OutBlock>().Out());
+                        }
+
                         cell.SetNumber(0);
                     }
                 }
             }
         }
+
+        yield return new WaitForSeconds(1);
+
+        foreach(Cell cell in cells)
+        {
+            cell.isReadyToChange = false;
+        }
+        currentCell.SetNumber(0);
+        isAnimation = false;
     }
 
     public void ChangeCells(Cell c)
@@ -470,7 +499,7 @@ public class Grid : MonoBehaviour
     public IEnumerator Up(Vector3 pos, int number)
     {
         GameObject g = Instantiate(_animation(number), pos, Quaternion.identity) as GameObject;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         Destroy(g);
     }
 }

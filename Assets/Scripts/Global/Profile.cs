@@ -22,6 +22,6 @@ public class Profile
 
         exp_to_next = 20;
 
-        money = 1000;
+        money = 100000;
     }
 }

@@ -146,7 +146,7 @@ public class Cell : ColorElement
 
             StartCoroutine(grid.Up(pos, number));
             isReadyToChange = true;
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.8f);
             isReadyToChange = false;
             if (valid)
             {
