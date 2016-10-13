@@ -111,7 +111,7 @@ public class Cell : ColorElement
                 Change();
                 break;
             case 2:
-                Up();
+                StartCoroutine(Up());
                 break;
             case 3:
                 StartCoroutine(Clear());
@@ -122,7 +122,7 @@ public class Cell : ColorElement
         Game.IncreaseCost();
     }
 
-    public void Up()
+    public IEnumerator Up()
     {
         if (number != 0)
         {
@@ -139,6 +139,10 @@ public class Cell : ColorElement
                 valid = true;
             }
 
+            StartCoroutine(grid.Up(pos, number));
+            isReadyToChange = true;
+            yield return new WaitForSeconds(1);
+            isReadyToChange = false;
             if (valid)
             {
                 SetNumber(i);

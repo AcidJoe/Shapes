@@ -337,6 +337,27 @@ public class Grid : MonoBehaviour
         return t1;
     }
 
+    public GameObject _animation(int number)
+    {
+        switch (number)
+        {
+            case 1:
+                return t1;
+            case 2:
+                return t2;
+            case 3:
+                return t3;
+            case 4:
+                return t4;
+            case 5:
+                return t5;
+            case 6:
+                return t6;
+        }
+
+        return t1;
+    }
+
     public IEnumerator Star(Cell c)
     {
         yield return new WaitWhile(() => isMove == true);
@@ -416,5 +437,12 @@ public class Grid : MonoBehaviour
         GameObject m = Instantiate(outBlock, pos, Quaternion.identity) as GameObject;
         m.GetComponent<Block>().number = number;
         StartCoroutine(m.GetComponent<OutBlock>().Out());
+    }
+
+    public IEnumerator Up(Vector3 pos, int number)
+    {
+        GameObject g = Instantiate(_animation(number), pos, Quaternion.identity) as GameObject;
+        yield return new WaitForSeconds(1);
+        Destroy(g);
     }
 }
