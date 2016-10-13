@@ -4392,6 +4392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellPrefab: {fileID: 1000013537301420, guid: 258489b1d9044174e9a2aaed6471048c, type: 2}
   moveBlock: {fileID: 1000011659018354, guid: 691ca0910c8b7e747a91ab5033bac8c6, type: 2}
+  outBlock: {fileID: 1000012802134288, guid: 171c473d343d6f5478e640e90ed2c214, type: 2}
   col: {fileID: 1797775938}
   t1: {fileID: 1000012822843162, guid: aa6ea29d922a265418e6d74134e2ecaa, type: 2}
   t2: {fileID: 1000012888059086, guid: ac7ff7905694d7a4a8618f3b3e9cf217, type: 2}

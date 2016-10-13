@@ -171,6 +171,7 @@ public class Cell : ColorElement
     {
         if (number != 0)
         {
+            grid.Clear(pos, number);
             SetNumber(0);
             Break();
         }

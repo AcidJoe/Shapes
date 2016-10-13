@@ -6,6 +6,7 @@ public class Grid : MonoBehaviour
 {
     public GameObject cellPrefab;
     public GameObject moveBlock;
+    public GameObject outBlock;
 
     public Collider2D col;
 
@@ -408,5 +409,12 @@ public class Grid : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void Clear(Vector3 pos, int number)
+    {
+        GameObject m = Instantiate(outBlock, pos, Quaternion.identity) as GameObject;
+        m.GetComponent<Block>().number = number;
+        StartCoroutine(m.GetComponent<OutBlock>().Out());
     }
 }
