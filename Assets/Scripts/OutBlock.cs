@@ -23,4 +23,13 @@ public class OutBlock : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    public IEnumerator In()
+    {
+        anim.SetInteger("In", 1);
+
+        yield return new WaitForSeconds(1);
+
+        Destroy(gameObject);
+    }
 }

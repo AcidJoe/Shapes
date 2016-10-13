@@ -112,12 +112,17 @@ public class Cell : ColorElement
                 break;
             case 2:
                 StartCoroutine(Up());
+                Pay();
                 break;
             case 3:
                 StartCoroutine(Clear());
+                Pay();
                 break;
         }
+    }
 
+    public void Pay()
+    {
         Game.Pay();
         Game.IncreaseCost();
     }

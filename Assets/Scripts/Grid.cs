@@ -383,20 +383,48 @@ public class Grid : MonoBehaviour
 
         if(forChange.Count == 2)
         {
-            int restore = forChange[0].number;
-
-            forChange[0].SetNumber(forChange[1].number);
-            forChange[1].SetNumber(restore);
-
-            foreach(Cell cell in forChange)
-            {
-                newCells.Add(cell);
-                cell.isReadyToChange = false;
-            }
-
-            cursor.SetCursorState(ChangeCursor.State.regular);
-            CheckMatches();
+            forChange[0].Pay();
+            StartCoroutine(change());
         }
+    }
+
+    public IEnumerator change()
+    {
+        int restore1 = forChange[0].number;
+        int restore0 = forChange[1].number;
+
+        forChange[0].SetNumber(0);
+        forChange[1].SetNumber(0);
+
+        GameObject m = Instantiate(outBlock, forChange[0].pos, Quaternion.identity) as GameObject;
+        GameObject m1 = Instantiate(outBlock, forChange[1].pos, Quaternion.identity) as GameObject;
+        m.GetComponent<Block>().number = restore1;
+        m1.GetComponent<Block>().number = restore0;
+        StartCoroutine(m.GetComponent<OutBlock>().Out());
+        StartCoroutine(m1.GetComponent<OutBlock>().Out());
+
+        yield return new WaitForSeconds(1);
+
+        GameObject q = Instantiate(outBlock, forChange[0].pos, Quaternion.identity) as GameObject;
+        GameObject q1 = Instantiate(outBlock, forChange[1].pos, Quaternion.identity) as GameObject;
+        q.GetComponent<Block>().number = restore0;
+        q1.GetComponent<Block>().number = restore1;
+        StartCoroutine(q.GetComponent<OutBlock>().In());
+        StartCoroutine(q1.GetComponent<OutBlock>().In());
+
+        yield return new WaitForSeconds(1);
+
+        forChange[0].SetNumber(restore0);
+        forChange[1].SetNumber(restore1);
+
+        foreach (Cell cell in forChange)
+        {
+            newCells.Add(cell);
+            cell.isReadyToChange = false;
+        }
+
+        cursor.SetCursorState(ChangeCursor.State.regular);
+        CheckMatches();
     }
 
     public void ActivateCollider(int i)

@@ -34,6 +34,10 @@ public class ChangeCursor : MonoBehaviour
             case State.regular:
                 isSpecialState = false;
                 grid.ActivateCollider(1);
+                foreach(Cell c in grid.forChange)
+                {
+                    c.isReadyToChange = false;
+                }
                 grid.forChange.Clear();
                 ui.activeSkill(0);
                 Cursor.SetCursor(regular, hotSpot, cursorMode);
