@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
     public GameObject loginPanel;
     public GameObject mainMenu;
 
-    public Text PlayerName;
+    public Text PlayerLevel;
     public Text Money;
 
     public string playerName;
@@ -25,7 +25,7 @@ public class MenuManager : MonoBehaviour
     {
         if (Game.isReady)
         {
-            PlayerName.text = Game.player._name;
+            PlayerLevel.text = Game.player.lvl.ToString();
             Money.text = Game.player.money.ToString();
         }
 	}
