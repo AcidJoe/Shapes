@@ -10,7 +10,7 @@ public class MenuManager : MonoBehaviour
     public Text PlayerLevel;
     public Text Money;
 
-    public string playerName;
+    public string playerName = "Тестер";
 
 	void Start ()
     {
