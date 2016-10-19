@@ -157,6 +157,11 @@ public class UIManager : MonoBehaviour
                 Game.matches--;
                 Game.player.exp++;
 
+                if(Game.player.exp == Game.player.exp_to_next)
+                {
+                    Game.player.lvlUp();
+                }
+
                 nextAmount = (float)Game.player.exp / (float)Game.player.exp_to_next;
                 break;
             case "money":
