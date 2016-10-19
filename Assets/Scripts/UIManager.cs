@@ -72,6 +72,10 @@ public class UIManager : MonoBehaviour
                 }
 
                 curAmount = levelBar.fillAmount;
+                if(curAmount >= 1)
+                {
+                    levelBar.fillAmount = 0;
+                }
                 if (curAmount >= nextAmount)
                 {
                     needWait = false;
@@ -164,7 +168,6 @@ public class UIManager : MonoBehaviour
                 if(Game.player.exp == Game.player.exp_to_next)
                 {
                     Game.player.lvlUp();
-                    levelBar.fillAmount = 0;
                 }
 
                 nextAmount = (float)Game.player.exp / (float)Game.player.exp_to_next;
