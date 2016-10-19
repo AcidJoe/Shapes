@@ -72,13 +72,15 @@ public class UIManager : MonoBehaviour
                 }
 
                 curAmount = levelBar.fillAmount;
-                if(curAmount >= nextAmount)
+                if (curAmount >= nextAmount)
                 {
                     needWait = false;
                 }
-
-                levelBar.fillAmount += fillTimer * Time.deltaTime;
-                playerLevel.text = Game.player.lvl.ToString();
+                else
+                {
+                    levelBar.fillAmount += fillTimer * Time.deltaTime;
+                    playerLevel.text = Game.player.lvl.ToString();
+                }
             }
             else if (isMoneyFill)
             {
@@ -100,10 +102,12 @@ public class UIManager : MonoBehaviour
                 {
                     needWait = false;
                 }
-
-                moneyBar.fillAmount += fillTimer * Time.deltaTime;
-                moneyGet.text = Game.playerMoney.ToString();
-                fullMoney.text = Game.allMoney.ToString();
+                else
+                {
+                    moneyBar.fillAmount += fillTimer * Time.deltaTime;
+                    moneyGet.text = Game.playerMoney.ToString();
+                    fullMoney.text = Game.allMoney.ToString();
+                }
             }
         }
     }
@@ -139,7 +143,7 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator FillLevel()
     {
-        levelBar.fillAmount = 0;
+        levelBar.fillAmount = (float)Game.player.exp / (float)Game.player.exp_to_next;
         isLevelFill = true;
 
         yield return new WaitWhile(() => isLevelFill);
@@ -160,13 +164,13 @@ public class UIManager : MonoBehaviour
                 if(Game.player.exp == Game.player.exp_to_next)
                 {
                     Game.player.lvlUp();
+                    levelBar.fillAmount = 0;
                 }
 
                 nextAmount = (float)Game.player.exp / (float)Game.player.exp_to_next;
                 break;
             case "money":
-                Game.money--;
-                Game.playerMoney++;
+                Game.playerMoney = Game.money;
 
                 nextAmount = (float)Game.playerMoney / (float)Game.allMoney;
                 break;
@@ -182,8 +186,7 @@ public class UIManager : MonoBehaviour
         MoneyPanel.SetActive(true);
         moneyBar.fillAmount = 0;
         Game.allMoney = Game.MoneyGet();
-        Game.money = Game.MoneyGet() / 2;
-        Game.playerMoney = 0;
+        Game.money = Game.allMoney / 2;
         isMoneyFill = true;
 
         yield return new WaitWhile(() => isMoneyFill);
