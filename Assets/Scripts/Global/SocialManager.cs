@@ -5,7 +5,6 @@ using SimpleJSON;
 public class SocialManager : MonoBehaviour
 {
     public int uid;
-    public string playerName;
     private string _profile = "https://www.acidjoe.ru/Games/Shapes/PHP/profile.php";
 
     public bool isDone = false;
@@ -15,10 +14,9 @@ public class SocialManager : MonoBehaviour
         Application.ExternalCall("Init");
     }
 
-    public void InitDone(string id, string n)
+    public void InitDone(string id)
     {
         uid = int.Parse(id);
-        playerName = n;
     }
 
     public void loadProfile()
