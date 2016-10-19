@@ -26,6 +26,12 @@ public class Manager : MonoBehaviour
         spawnPoint = new Vector3(2, -1.7f);
         cursor = FindObjectOfType<ChangeCursor>();
         ui = GetComponent<UIManager>();
+
+        if(Game.player == null)
+        {
+            Game.player = new Profile("Test");
+            Game.SetDefaults();
+        }
     }
 
     void Update()
@@ -151,18 +157,26 @@ public class Manager : MonoBehaviour
         }
     }
 
-    void GameOver()
+    public void GameOver()
     {
         foreach(Cell c in grid.cells)
         {
             c.gameObject.SetActive(false);
         }
-        ui.GameOver();
+
+        StartCoroutine(ui.GameOver());
     }
 
     public void Return()
     {
-        Game.player.money += Game.MoneyGet();
+        Game.player.money += Game.playerMoney;
         Game.GoToScene(0);
+    }
+
+    public void Replay()
+    {
+        Game.player.money += Game.playerMoney;
+        Game.SetDefaults();
+        Game.GoToScene(1);
     }
 }

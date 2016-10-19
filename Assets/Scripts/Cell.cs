@@ -7,7 +7,7 @@ public class Cell : ColorElement
     public Grid grid;
     public ChangeCursor cursor;
 
-    //public GameObject roll;
+    public GameObject roll;
 
     public Collider2D col;
     //public bool isNew;
@@ -17,7 +17,7 @@ public class Cell : ColorElement
 
 	void Awake ()
     {
-        //roll.SetActive(false);
+        roll.SetActive(false);
         col = GetComponent<Collider2D>();
         cursor = FindObjectOfType<ChangeCursor>();
         pos = transform.position;
@@ -44,11 +44,11 @@ public class Cell : ColorElement
 
         if (isReadyToChange)
         {
-            //roll.SetActive(true);
+            roll.SetActive(true);
         }
         else
         {
-            //roll.SetActive(false);
+            roll.SetActive(false);
         }
 	}
 
@@ -111,18 +111,23 @@ public class Cell : ColorElement
                 Change();
                 break;
             case 2:
-                Up();
+                StartCoroutine(Up());
+                Pay();
                 break;
             case 3:
-                Clear();
+                StartCoroutine(Clear());
+                Pay();
                 break;
         }
+    }
 
+    public void Pay()
+    {
         Game.Pay();
         Game.IncreaseCost();
     }
 
-    public void Up()
+    public IEnumerator Up()
     {
         if (number != 0)
         {
@@ -139,6 +144,10 @@ public class Cell : ColorElement
                 valid = true;
             }
 
+            StartCoroutine(grid.Up(pos, number));
+            isReadyToChange = true;
+            yield return new WaitForSeconds(0.8f);
+            isReadyToChange = false;
             if (valid)
             {
                 SetNumber(i);
@@ -167,13 +176,17 @@ public class Cell : ColorElement
         }
     }
 
-    public void Clear()
+    public IEnumerator Clear()
     {
         if (number != 0)
         {
+            grid.Clear(pos, number);
             SetNumber(0);
             Break();
         }
+        isReadyToChange = true;
+        yield return new WaitForSeconds(1);
+        isReadyToChange = false;
     }
 
     void Break()

@@ -61,7 +61,7 @@ public class MovingBlock : MonoBehaviour
 
     public void fadeShape()
     {
-        block.spriterNum.color = Color.Lerp(block.spriterNum.color, block.spriterBlock.color, 0.05f);
+        block.spriterNum.color = Color.Lerp(block.spriterNum.color, block.spriterBlock.color, 0.2f);
     }
 
     public void SetTarget(Transform t)

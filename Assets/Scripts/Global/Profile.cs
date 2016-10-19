@@ -20,6 +20,15 @@ public class Profile
         lvl = 1;
         exp = 0;
 
-        money = 1000;
+        exp_to_next = 10 + (lvl * 5);
+
+        money = 100000;
+    }
+
+    public void lvlUp()
+    {
+        lvl++;
+        exp = 0;
+        exp_to_next = 10 + (lvl * 5);
     }
 }

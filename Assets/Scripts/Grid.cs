@@ -6,6 +6,7 @@ public class Grid : MonoBehaviour
 {
     public GameObject cellPrefab;
     public GameObject moveBlock;
+    public GameObject outBlock;
 
     public Collider2D col;
 
@@ -14,6 +15,7 @@ public class Grid : MonoBehaviour
     public GameObject t3;
     public GameObject t4;
     public GameObject t5;
+    public GameObject t6;
 
     public GameObject actCol;
 
@@ -143,23 +145,6 @@ public class Grid : MonoBehaviour
 
             if (currentMatch.Count >= 3)
             {
-                //foreach (Cell c in currentMatch)
-                //{
-                //    if (c != currentCell)
-                //    {
-                //        c.SetNumber(0);
-                //    }
-                //    else if (c == currentCell)
-                //    {
-                //        int i = c.number + 1;
-                //        if (i > 7)
-                //            i = 0;
-                //        c.SetNumber(i);
-                //    }
-                //}
-
-                //CheckMatches();
-
                 StartCoroutine(VisualizeChain(currentMatch));
             }
             else
@@ -284,7 +269,6 @@ public class Grid : MonoBehaviour
                 GameObject m = Instantiate(moveBlock, c.transform.position, Quaternion.identity) as GameObject;
                 m.GetComponent<Block>().number = c.number;
                 m.GetComponent<MovingBlock>().SetTarget(currentCell.transform);
-                //c.spriterNum.sortingOrder = 0;
                 c.SetNumber(0);
             }
             else if (c == currentCell)
@@ -294,13 +278,7 @@ public class Grid : MonoBehaviour
                 m.GetComponent<Block>().number = c.number;
                 m.GetComponent<SpriteRenderer>().sortingOrder = 20;
                 m.GetComponent<MovingBlock>().number.sortingOrder = 25;
-                //int i = c.number + 1;
-                //if (i > 7)
-                //{
-                //    StartCoroutine(Star(currentCell));
-                //    i = 0;
-                //}
-                //c.SetNumber(i);
+                Game.shapes[c.number - 1]++;
             }
         }
 
@@ -308,32 +286,35 @@ public class Grid : MonoBehaviour
 
         isAnimation = true;
 
+        bool isStar = false;
+
         int i = currentCell.number + 1;
         if (i > 7)
         {
             StartCoroutine(Star(currentCell));
-            i = 0;
+            isStar = true;
         }
-        currentCell.SetNumber(i);
+
+        if (!isStar)
+        {
+            currentCell.SetNumber(i);
+        }
 
         Destroy(GameObject.FindGameObjectWithTag("ActiveCol"));
 
-        GameObject g = Instantiate(_animation(), currentCell.transform.position, Quaternion.identity) as GameObject;
+        if (!isStar)
+        {
+            GameObject g = Instantiate(_animation(), currentCell.transform.position, Quaternion.identity) as GameObject;
 
-        //foreach (Cell c in chain)
-        //{
-        //    if (c != currentCell)
-        //    {
-        //        c.SetNumber(0);
-        //        c.spriterNum.sortingOrder = 1;
-        //    }
-        //}
-        yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1);
 
-        isAnimation = false;
-        Destroy(g);
+            isAnimation = false;
+            Destroy(g);
+        }
 
         yield return new WaitWhile(() => isAnimation == true);
+
+        isStar = false;
 
         foreach (Cell c in cells)
         {
@@ -360,6 +341,29 @@ public class Grid : MonoBehaviour
                 return t4;
             case 5:
                 return t5;
+            case 6:
+                return t6;
+        }
+
+        return t1;
+    }
+
+    public GameObject _animation(int number)
+    {
+        switch (number)
+        {
+            case 1:
+                return t1;
+            case 2:
+                return t2;
+            case 3:
+                return t3;
+            case 4:
+                return t4;
+            case 5:
+                return t5;
+            case 6:
+                return t6;
         }
 
         return t1;
@@ -377,11 +381,29 @@ public class Grid : MonoBehaviour
                 {
                     if (cell.transform.position == new Vector3(c.transform.position.x + x, c.transform.position.y + y))
                     {
+                        cell.isReadyToChange = true;
+
+                        if(cell.number > 0)
+                        {
+                            GameObject m = Instantiate(outBlock, cell.pos, Quaternion.identity) as GameObject;
+                            m.GetComponent<Block>().number = cell.number;
+                            StartCoroutine(m.GetComponent<OutBlock>().Out());
+                        }
+
                         cell.SetNumber(0);
                     }
                 }
             }
         }
+
+        yield return new WaitForSeconds(1);
+
+        foreach(Cell cell in cells)
+        {
+            cell.isReadyToChange = false;
+        }
+        currentCell.SetNumber(0);
+        isAnimation = false;
     }
 
     public void ChangeCells(Cell c)
@@ -390,20 +412,48 @@ public class Grid : MonoBehaviour
 
         if(forChange.Count == 2)
         {
-            int restore = forChange[0].number;
-
-            forChange[0].SetNumber(forChange[1].number);
-            forChange[1].SetNumber(restore);
-
-            foreach(Cell cell in forChange)
-            {
-                newCells.Add(cell);
-                cell.isReadyToChange = false;
-            }
-
-            cursor.SetCursorState(ChangeCursor.State.regular);
-            CheckMatches();
+            forChange[0].Pay();
+            StartCoroutine(change());
         }
+    }
+
+    public IEnumerator change()
+    {
+        int restore1 = forChange[0].number;
+        int restore0 = forChange[1].number;
+
+        forChange[0].SetNumber(0);
+        forChange[1].SetNumber(0);
+
+        GameObject m = Instantiate(outBlock, forChange[0].pos, Quaternion.identity) as GameObject;
+        GameObject m1 = Instantiate(outBlock, forChange[1].pos, Quaternion.identity) as GameObject;
+        m.GetComponent<Block>().number = restore1;
+        m1.GetComponent<Block>().number = restore0;
+        StartCoroutine(m.GetComponent<OutBlock>().Out());
+        StartCoroutine(m1.GetComponent<OutBlock>().Out());
+
+        yield return new WaitForSeconds(1);
+
+        GameObject q = Instantiate(outBlock, forChange[0].pos, Quaternion.identity) as GameObject;
+        GameObject q1 = Instantiate(outBlock, forChange[1].pos, Quaternion.identity) as GameObject;
+        q.GetComponent<Block>().number = restore0;
+        q1.GetComponent<Block>().number = restore1;
+        StartCoroutine(q.GetComponent<OutBlock>().In());
+        StartCoroutine(q1.GetComponent<OutBlock>().In());
+
+        yield return new WaitForSeconds(1);
+
+        forChange[0].SetNumber(restore0);
+        forChange[1].SetNumber(restore1);
+
+        foreach (Cell cell in forChange)
+        {
+            newCells.Add(cell);
+            cell.isReadyToChange = false;
+        }
+
+        cursor.SetCursorState(ChangeCursor.State.regular);
+        CheckMatches();
     }
 
     public void ActivateCollider(int i)
@@ -437,5 +487,19 @@ public class Grid : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void Clear(Vector3 pos, int number)
+    {
+        GameObject m = Instantiate(outBlock, pos, Quaternion.identity) as GameObject;
+        m.GetComponent<Block>().number = number;
+        StartCoroutine(m.GetComponent<OutBlock>().Out());
+    }
+
+    public IEnumerator Up(Vector3 pos, int number)
+    {
+        GameObject g = Instantiate(_animation(number), pos, Quaternion.identity) as GameObject;
+        yield return new WaitForSeconds(1f);
+        Destroy(g);
     }
 }
