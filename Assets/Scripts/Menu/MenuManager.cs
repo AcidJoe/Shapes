@@ -7,6 +7,8 @@ public class MenuManager : MonoBehaviour
     public GameObject loginPanel;
     public GameObject mainMenu;
 
+    public SocialManager sm;
+
     public Text PlayerLevel;
     public Text Money;
 
@@ -16,6 +18,9 @@ public class MenuManager : MonoBehaviour
 
 	void Start ()
     {
+        sm = FindObjectOfType<SocialManager>();
+        sm.Initialize();
+
         if (!Game.isReady)
         {
             loginPanel.SetActive(true);
@@ -42,6 +47,21 @@ public class MenuManager : MonoBehaviour
     public void CreateProfile()
     {
         Game.player = new Profile(playerName);
+        loginPanel.SetActive(false);
+        Game.isReady = true;
+        mainMenu.SetActive(true);
+    }
+
+    public void log()
+    {
+        StartCoroutine(Login());
+    }
+
+    public IEnumerator Login()
+    {
+        sm.loadProfile();
+        yield return new WaitWhile(() => !sm.isDone);
+
         loginPanel.SetActive(false);
         Game.isReady = true;
         mainMenu.SetActive(true);
