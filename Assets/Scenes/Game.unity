@@ -501,6 +501,50 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 65297703}
+--- !u!1 &70228074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 70228076}
+  - 114: {fileID: 70228075}
+  m_Layer: 0
+  m_Name: SocialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &70228075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 70228074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbcbad5379232ff44b4a5442dcdd58e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uid: 0
+  _profile: https://www.acidjoe.ru/Games/Shapes/PHP/profile.php
+  _update: https://www.acidjoe.ru/Games/Shapes/PHP/update.php
+  isDone: 0
+--- !u!4 &70228076
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 70228074}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.26886448, y: -1.0294961, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &81575968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,6 +2847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173fc78e230304c458c53a13206af9bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sm: {fileID: 0}
   single_block: {fileID: 1000013457619400, guid: d8b944b379de618478ad906ea40aed15,
     type: 2}
   double_block: {fileID: 1000011360541988, guid: e4b703da5230db14589c160248cc7fd0,
