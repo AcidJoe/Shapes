@@ -189,7 +189,14 @@ public class UIManager : MonoBehaviour
         MoneyPanel.SetActive(true);
         moneyBar.fillAmount = 0;
         Game.allMoney = Game.MoneyGet();
-        Game.money = Game.allMoney / 2;
+        if (Game.player.premium == 1)
+        {
+            Game.money = Game.allMoney;
+        }
+        else
+        {
+            Game.money = Game.allMoney / 2;
+        }
         isMoneyFill = true;
 
         yield return new WaitWhile(() => isMoneyFill);

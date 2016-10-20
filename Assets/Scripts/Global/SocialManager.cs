@@ -5,7 +5,8 @@ using SimpleJSON;
 public class SocialManager : MonoBehaviour
 {
     public int uid;
-    private string _profile = "https://www.acidjoe.ru/Games/Shapes/PHP/profile.php";
+    public string _profile = "https://www.acidjoe.ru/Games/Shapes/PHP/profile.php";
+    public string _update = "https://www.acidjoe.ru/Games/Shapes/PHP/update.php";
 
     public bool isDone = false;
 
@@ -44,5 +45,28 @@ public class SocialManager : MonoBehaviour
             );
 
         isDone = true;
+    }
+
+    public IEnumerator pay()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("method", "pay");
+        form.AddField("uid", uid);
+        form.AddField("cost", Game.specialCost);
+        WWW www = new WWW(_update, form);
+        yield return www;
+        loadProfile();
+    }
+
+    public IEnumerator endGame()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("method", "endGame");
+        form.AddField("uid", uid);
+        form.AddField("matches", Game.matches);
+        form.AddField("money", Game.MoneyGet());
+        WWW www = new WWW(_update, form);
+        yield return www;
+        loadProfile();
     }
 }
