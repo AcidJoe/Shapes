@@ -27,6 +27,10 @@ public class SocialManager : MonoBehaviour
 
     public IEnumerator load()
     {
+        if(Game.player.id != 0)
+        {
+            uid = Game.player.id;
+        }
         isDone = false;
 
         WWWForm form = new WWWForm();
@@ -51,7 +55,7 @@ public class SocialManager : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("method", "pay");
-        form.AddField("uid", uid);
+        form.AddField("uid", Game.player.id);
         form.AddField("cost", Game.specialCost);
         WWW www = new WWW(_update, form);
         yield return www;
@@ -62,7 +66,7 @@ public class SocialManager : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("method", "endGame");
-        form.AddField("uid", uid);
+        form.AddField("uid", Game.player.id);
         form.AddField("matches", Game.matches);
         form.AddField("money", Game.MoneyGet());
         WWW www = new WWW(_update, form);

@@ -28,6 +28,11 @@ public class UIManager : MonoBehaviour
     public Image levelBar;
     public Text playerLevel;
 
+    public int showMatches;
+    public int showExp;
+    public int showLvl;
+    public int showNext;
+
     public float curAmount;
     public float nextAmount;
 
@@ -59,9 +64,9 @@ public class UIManager : MonoBehaviour
         {
             if (isLevelFill)
             {
-                if(!needWait)
+                if (!needWait)
                 {
-                    if(Game.matches - 1 >= 0)
+                    if (Game.matches - 1 >= 0)
                     {
                         StartCoroutine(filler("level"));
                     }
@@ -72,7 +77,7 @@ public class UIManager : MonoBehaviour
                 }
 
                 curAmount = levelBar.fillAmount;
-                if(curAmount >= 1)
+                if (curAmount >= 1)
                 {
                     levelBar.fillAmount = 0;
                 }
@@ -83,21 +88,14 @@ public class UIManager : MonoBehaviour
                 else
                 {
                     levelBar.fillAmount += fillTimer * Time.deltaTime;
-                    playerLevel.text = Game.player.lvl.ToString();
+                    playerLevel.text = showLvl.ToString();
                 }
             }
             else if (isMoneyFill)
             {
                 if (!needWait)
                 {
-                    if (Game.money - 1 >= 0)
-                    {
-                        StartCoroutine(filler("money"));
-                    }
-                    else
-                    {
-                        isMoneyFill = false;
-                    }
+                    StartCoroutine(filler("money"));
                 }
 
                 curAmount = moneyBar.fillAmount;
@@ -105,6 +103,7 @@ public class UIManager : MonoBehaviour
                 if (curAmount >= nextAmount)
                 {
                     needWait = false;
+                    isMoneyFill = false;
                 }
                 else
                 {
@@ -147,8 +146,12 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator FillLevel()
     {
-        levelBar.fillAmount = (float)Game.player.exp / (float)Game.player.exp_to_next;
         isLevelFill = true;
+        showMatches = Game.matches;
+        showExp = Game.player.exp;
+        showNext = Game.player.exp_to_next;
+        showLvl = Game.player.lvl;
+        levelBar.fillAmount = (float)showExp / (float)showNext;
 
         yield return new WaitWhile(() => isLevelFill);
         yield return new WaitForSeconds(1.5f);
@@ -162,15 +165,18 @@ public class UIManager : MonoBehaviour
         switch (operation)
         {
             case "level":
-                Game.matches--;
-                Game.player.exp++;
+                showMatches--;
+                showExp++;
 
-                if(Game.player.exp == Game.player.exp_to_next)
+                if(showExp == showNext)
                 {
-                    Game.player.lvlUp();
+                    showLvl++;
+                    showExp = 0;
+                    showLvl++;
+                    showNext = 10 + showLvl * 5;
                 }
 
-                nextAmount = (float)Game.player.exp / (float)Game.player.exp_to_next;
+                nextAmount = (float)showExp / (float)showNext;
                 break;
             case "money":
                 Game.playerMoney = Game.money;
@@ -199,8 +205,7 @@ public class UIManager : MonoBehaviour
         }
         isMoneyFill = true;
 
-        yield return new WaitWhile(() => isMoneyFill);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
         home.interactable = true;
         replay.interactable = true;
