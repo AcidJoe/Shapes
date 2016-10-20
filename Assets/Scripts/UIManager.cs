@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
             {
                 if (!needWait)
                 {
-                    if (Game.matches - 1 >= 0)
+                    if (showMatches - 1 >= 0)
                     {
                         StartCoroutine(filler("level"));
                     }
