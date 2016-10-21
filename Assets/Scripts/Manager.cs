@@ -4,6 +4,7 @@ using System.Collections;
 public class Manager : MonoBehaviour
 {
     public static int gridMax;
+    public SocialManager sm;
 
     public GameObject single_block;
     public GameObject double_block;
@@ -16,33 +17,50 @@ public class Manager : MonoBehaviour
 
     public Grid grid;
 
-    //public ChangeCursor cursor;
+    public ChangeCursor cursor;
 
-	void Start ()
+    public UIManager ui;
+
+    void Start()
     {
+        sm = FindObjectOfType<SocialManager>();
+        Game.sm = sm;
         gridMax = 3;
-        spawnPoint = new Vector3(2, -2);
-        //cursor = FindObjectOfType<ChangeCursor>();
-	}
-	
-	void Update ()
+        spawnPoint = new Vector3(2, -1.7f);
+        cursor = FindObjectOfType<ChangeCursor>();
+        ui = GetComponent<UIManager>();
+
+        if(Game.player == null)
+        {
+            Game.player = new Profile("Test");
+            Game.SetDefaults();
+        }
+    }
+
+    void Update()
     {
         grid = FindObjectOfType<Grid>();
         blocks = FindObjectsOfType<Block>();
 
-        if(blocks.Length < 1 && !grid.isCheck)
+        if (!grid.CheckPossible())
+        {
+            grid.isEnd = true;
+            GameOver();
+        }
+
+        if (blocks.Length < 1 && !grid.isCheck && !grid.isEnd)
         {
             SpawnBlock();
         }
 
-        //if (cursor.isSpecialState)
-        //{
-        //    if (Input.GetMouseButtonDown(1))
-        //    {
-        //        cursor.changeState(0);
-        //    }
-        //}
-	}
+        if (cursor.isSpecialState)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                cursor.changeState(0);
+            }
+        }
+    }
 
     void SpawnBlock()
     {
@@ -70,21 +88,95 @@ public class Manager : MonoBehaviour
 
     public void Remove()
     {
-        Destroy(currentBlock);
+        CheckRemove();
     }
 
     public void UpShape()
     {
-        //cursor.changeState(2);
+        Check(2);
     }
 
     public void Clear()
     {
-        //cursor.changeState(3);
+        Check(3);
     }
 
     public void Change()
     {
-        //cursor.changeState(1);
+        Check(1);
+    }
+
+    bool CheckCost()
+    {
+        if (Game.player.money - Game.specialCost >= 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    void Check(int i)
+    {
+        int count = 0;
+        foreach (Cell c in grid.cells)
+        {
+            if (c.number > 0)
+            {
+                count++;
+            }
+        }
+
+        if (count >= 2)
+        {
+            if (CheckCost())
+            {
+                cursor.changeState(i);
+            }
+            else
+            {
+                StartCoroutine(ui.Error(1));
+            }
+        }
+        else
+        {
+            StartCoroutine(ui.Error(2));
+        }
+    }
+
+    void CheckRemove()
+    {
+        if (CheckCost())
+        {
+            Destroy(currentBlock);
+            Game.Pay();
+            Game.IncreaseCost();
+        }
+        else
+        {
+            StartCoroutine(ui.Error(1));
+        }
+    }
+
+    public void GameOver()
+    {
+        foreach(Cell c in grid.cells)
+        {
+            c.gameObject.SetActive(false);
+        }
+
+        StartCoroutine(ui.GameOver());
+        StartCoroutine(sm.endGame());
+    }
+
+    public void Return()
+    {
+        Game.GoToScene(0);
+    }
+
+    public void Replay()
+    {
+        Game.SetDefaults();
+        Game.GoToScene(1);
     }
 }

@@ -18,9 +18,11 @@ public class ChangeCursor : MonoBehaviour
     public bool isSpecialState;
 
     public Grid grid;
+    public UIManager ui;
 
     void Start()
     {
+        ui = FindObjectOfType<UIManager>();
         grid = FindObjectOfType<Grid>();
         SetCursorState(State.regular);
     }
@@ -31,19 +33,31 @@ public class ChangeCursor : MonoBehaviour
         {
             case State.regular:
                 isSpecialState = false;
+                grid.ActivateCollider(1);
+                foreach(Cell c in grid.forChange)
+                {
+                    c.isReadyToChange = false;
+                }
                 grid.forChange.Clear();
+                ui.activeSkill(0);
                 Cursor.SetCursor(regular, hotSpot, cursorMode);
                 break;
             case State.change:
                 isSpecialState = true;
+                grid.ActivateCollider(0);
+                ui.activeSkill(1);
                 Cursor.SetCursor(change, hotSpot, cursorMode);
                 break;
             case State.up:
                 isSpecialState = true;
+                grid.ActivateCollider(0);
+                ui.activeSkill(2);
                 Cursor.SetCursor(up, hotSpot, cursorMode);
                 break;
             case State.clear:
                 isSpecialState = true;
+                grid.ActivateCollider(0);
+                ui.activeSkill(3);
                 Cursor.SetCursor(clear, hotSpot, cursorMode);
                 break;
         }
