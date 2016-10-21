@@ -355,7 +355,7 @@ MonoBehaviour:
   - {fileID: 114000010790995012}
   mousePos: {x: 0, y: 0, z: 0}
   origin: {x: 0, y: 0, z: 0}
-  delay: 0.1
+  delay: 0.3
   moveReadyTime: 0
   positions:
   - {x: -0.5, y: 0, z: 0}

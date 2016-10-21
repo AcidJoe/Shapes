@@ -118,13 +118,11 @@ public class Grid : MonoBehaviour
             newCells.Clear();
 
             first.SetNumber(blocks[0].number);
-            //first.isNew = true;
             newCells.Add(first);
             blocks[0].MoveToCell(first.transform.position);
             if (blocks.Length > 1)
             {
                 second.SetNumber(blocks[1].number);
-                //second.isNew = true;
                 newCells.Add(second);
                 blocks[1].MoveToCell(second.transform.position);
             }

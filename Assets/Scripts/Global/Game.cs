@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public static class Game
 {
     public static Profile player;
+    public static SocialManager sm;
 
     public static int matches;
     public static int money;
@@ -42,7 +43,7 @@ public static class Game
 
     public static void Pay()
     {
-        player.money -= specialCost;
+        sm.StartCoroutine(sm.pay());
     }
 
     public static int MoneyGet()

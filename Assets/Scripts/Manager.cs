@@ -4,6 +4,7 @@ using System.Collections;
 public class Manager : MonoBehaviour
 {
     public static int gridMax;
+    public SocialManager sm;
 
     public GameObject single_block;
     public GameObject double_block;
@@ -22,6 +23,8 @@ public class Manager : MonoBehaviour
 
     void Start()
     {
+        sm = FindObjectOfType<SocialManager>();
+        Game.sm = sm;
         gridMax = 3;
         spawnPoint = new Vector3(2, -1.7f);
         cursor = FindObjectOfType<ChangeCursor>();
@@ -129,8 +132,6 @@ public class Manager : MonoBehaviour
             if (CheckCost())
             {
                 cursor.changeState(i);
-                //Game.Pay();
-                //Game.IncreaseCost();
             }
             else
             {
@@ -165,17 +166,16 @@ public class Manager : MonoBehaviour
         }
 
         StartCoroutine(ui.GameOver());
+        StartCoroutine(sm.endGame());
     }
 
     public void Return()
     {
-        Game.player.money += Game.playerMoney;
         Game.GoToScene(0);
     }
 
     public void Replay()
     {
-        Game.player.money += Game.playerMoney;
         Game.SetDefaults();
         Game.GoToScene(1);
     }
